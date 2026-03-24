@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Book Your Dream Event - DRV Events | Premium Wedding Planning & Event Management">
+    <meta name="keywords" content="Book Event, Booking, Wedding Planning, Event Management, DRV Events">
+    <title>Book Your Event - DRV Events | Ready to Plan Your Dream</title>
+    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="../css/responsive.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Booking Section Styles */
+        .booking-hero {
+            padding: 6rem 0;
+            background: linear-gradient(135deg, rgba(232, 213, 55, 0.15), rgba(240, 168, 200, 0.1));
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .booking-hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -10%;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(232, 213, 55, 0.1), transparent);
+            border-radius: 50%;
+            pointer-events: none;
+        }
+
+        .booking-hero h1 {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, var(--accent-gold), #f0a8c8);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: textGlow 2s ease-in-out infinite;
+        }
+
+        .booking-hero p {
+            color: var(--text-muted);
+            font-size: 1.2rem;
+            margin-bottom: 3rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* Booking Features */
+        .booking-features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+
+        .booking-feature {
+            background: rgba(232, 213, 55, 0.08);
+            border: 2px solid var(--border-color);
+            border-radius: 12px;
+            padding: 2rem;
+            text-align: center;
+            transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        .booking-feature:hover {
+            border-color: var(--accent-gold);
+            transform: translateY(-12px);
+            box-shadow: 0 20px 50px rgba(232, 213, 55, 0.2);
+        }
+
+        .booking-feature-icon {
+            font-size: 3rem;
+            color: var(--accent-gold);
+            margin-bottom: 1rem;
+        }
+
+        .booking-feature h3 {
+            color: var(--accent-gold);
+            margin-bottom: 0.8rem;
+        }
+
+        .booking-feature p {
+            color: var(--text-muted);
+            margin: 0;
+        }
+
+        /* CTA Buttons */
+        .booking-cta {
+            display: flex;
+            gap: 2rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 3rem;
+        }
+
+        .booking-btn {
+            padding: 1.2rem 3rem;
+            font-size: 1.15rem;
+            font-weight: 700;
+            border-radius: 50px;
+            text-decoration: none;
+            transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .booking-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.2);
+            transition: left 0.6s ease;
+            z-index: -1;
+        }
+
+        .booking-btn:hover::before {
+            left: 100%;
+        }
+
+        .booking-btn-primary {
+            background: linear-gradient(135deg, var(--accent-gold), #f0a8c8);
+            color: var(--primary-dark);
+            border: 2px solid var(--accent-gold);
+        }
+
+        .booking-btn-primary:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 50px rgba(232, 213, 55, 0.4);
+        }
+
+        .booking-btn-secondary {
+            background: transparent;
+            color: var(--accent-gold);
+            border: 2px solid var(--accent-gold);
+        }
+
+        .booking-btn-secondary:hover {
+            background: var(--accent-gold);
+            color: var(--primary-dark);
+            transform: translateY(-5px);
+        }
+
+        /* Event Types Grid */
+        .event-types {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin: 4rem 0;
+        }
+
+        .event-type-card {
+            background: linear-gradient(135deg, rgba(232, 213, 55, 0.05), rgba(240, 168, 200, 0.03));
+            border: 2px solid var(--border-color);
+            border-radius: 15px;
+            padding: 2.5rem;
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+            text-align: center;
+        }
+
+        .event-type-card:hover {
+            border-color: var(--accent-gold);
+            transform: translateY(-15px) scale(1.05);
+            box-shadow: 0 25px 60px rgba(232, 213, 55, 0.3);
+        }
+
+        .event-type-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--accent-gold), #f0a8c8);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            border-radius: 15px 15px 0 0;
+        }
+
+        .event-type-card:hover::before {
+            opacity: 1;
+        }
+
+        .event-type-card {
+            position: relative;
+        }
+
+        .event-type-icon {
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .event-type-card h3 {
+            color: var(--accent-gold);
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+
+        .event-type-card p {
+            color: var(--text-muted);
+            margin: 0;
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        /* Stats Section */
+        .booking-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 2rem;
+            margin: 4rem 0;
+            text-align: center;
+        }
+
+        .booking-stat {
+            background: rgba(232, 213, 55, 0.1);
+            border: 2px solid var(--border-color);
+            border-radius: 12px;
+            padding: 2rem 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .booking-stat:hover {
+            border-color: var(--accent-gold);
+            box-shadow: 0 15px 40px rgba(232, 213, 55, 0.2);
+        }
+
+        .booking-stat-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--accent-gold);
+            margin-bottom: 0.5rem;
+        }
+
+        .booking-stat-label {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation Header -->
+    <header class="navbar">
+        <div class="navbar-container">
+            <div class="navbar-logo">
+                <a href="../index.html">
+                    <span class="logo-icon">✨</span>
+                    <span class="logo-text">DRV Events</span>
+                </a>
+            </div>
+
+            <nav class="nav-menu">
+                <ul class="nav-list">
+                    <li><a href="../index.html" class="nav-link">Home</a></li>
+                    <li><a href="about.html" class="nav-link">About Us</a></li>
+                    <li><a href="services.html" class="nav-link">Services</a></li>
+                    <li><a href="testimonials.html" class="nav-link">Testimonials</a></li>
+                    <li><a href="booking.html" class="nav-link active">Booking</a></li>
+                    <li><a href="contact.html" class="nav-link">Contact</a></li>
+                </ul>
+            </nav>
+
+            <div class="contact-btn-wrapper">
+                <a href="tel:8319111085" class="contact-btn">
+                    <i class="fas fa-phone"></i> Call Now
+                </a>
+                <button class="hamburger" id="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Booking Hero Section -->
+    <section class="booking-hero" style="margin-top: 60px;">
+        <div class="container" style="position: relative; z-index: 1;">
+            <h1>Ready To Plan Your <span style="color: #f0a8c8;">Dream Event</span>?</h1>
+            <p>Let DRV Events transform your vision into reality. With 13+ years of expertise and 1000+ happy families, we're ready to create magic for you.</p>
+
+            <!-- Booking Features -->
+            <div class="booking-features">
+                <div class="booking-feature">
+                    <div class="booking-feature-icon">
+                        <i class="fas fa-check-circle"></i>
+                    </div>
+                    <h3>100% Customized</h3>
+                    <p>Every event tailored to your dreams and preferences</p>
+                </div>
+                <div class="booking-feature">
+                    <div class="booking-feature-icon">
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <h3>Expert Planning</h3>
+                    <p>13+ years of professional event management experience</p>
+                </div>
+                <div class="booking-feature">
+                    <div class="booking-feature-icon">
+                        <i class="fas fa-handshake"></i>
+                    </div>
+                    <h3>Stress-Free</h3>
+                    <p>We handle everything while you enjoy the celebration</p>
+                </div>
+            </div>
+
+            <!-- CTA Buttons -->
+            <div class="booking-cta">
+                <a href="https://wa.me/8319111085?text=Hello%20DRV%20Events!%20I%20want%20to%20book%20an%20event." class="booking-btn booking-btn-primary">
+                    <i class="fas fa-calendar-check"></i> Book Now
+                </a>
+                <a href="contact.html" class="booking-btn booking-btn-secondary">
+                    <i class="fas fa-phone"></i> Get Consultation
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Event Types Section -->
+    <section style="padding: 6rem 0; background: var(--primary-dark);">
+        <div class="container">
+            <div style="text-align: center; margin-bottom: 4rem;">
+                <h2 style="font-size: 3rem; margin-bottom: 1rem; color: var(--accent-gold);">What Can We <span style="color: #f0a8c8;">Plan For You?</span></h2>
+                <p style="color: var(--text-muted); font-size: 1.05rem;">Choose your event type or let us create something custom</p>
+            </div>
+
+            <!-- Event Types Grid -->
+            <div class="event-types">
+                <div class="event-type-card">
+                    <div class="event-type-icon">💍</div>
+                    <h3>Weddings</h3>
+                    <p>From intimate ceremonies to grand celebrations - your perfect day awaits</p>
+                </div>
+
+                <div class="event-type-card">
+                    <div class="event-type-icon">🎂</div>
+                    <h3>Birthdays</h3>
+                    <p>Celebrate milestones with memorable parties and special experiences</p>
+                </div>
+
+                <div class="event-type-card">
+                    <div class="event-type-icon">💑</div>
+                    <h3>Anniversaries</h3>
+                    <p>Cherish your love story with romantic and elegant celebrations</p>
+                </div>
+
+                <div class="event-type-card">
+                    <div class="event-type-icon">🎓</div>
+                    <h3>School/College Events</h3>
+                    <p>Unforgettable gatherings for educational institutions and students</p>
+                </div>
+
+                <div class="event-type-card">
+                    <div class="event-type-icon">💼</div>
+                    <h3>Corporate Events</h3>
+                    <p>Professional launches, team building, and conferences with style</p>
+                </div>
+
+                <div class="event-type-card">
+                    <div class="event-type-icon">✨</div>
+                    <h3>Custom Events</h3>
+                    <p>Tell us your vision and we'll make it exactly as you imagine</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section style="padding: 6rem 0; background: linear-gradient(135deg, rgba(232, 213, 55, 0.1), rgba(240, 168, 200, 0.05)); border-top: 1px solid var(--border-color);">
+        <div class="container">
+            <div class="booking-stats">
+                <div class="booking-stat">
+                    <div class="booking-stat-number">1000+</div>
+                    <div class="booking-stat-label">Happy Families</div>
+                </div>
+                <div class="booking-stat">
+                    <div class="booking-stat-number">500+</div>
+                    <div class="booking-stat-label">Events Planned</div>
+                </div>
+                <div class="booking-stat">
+                    <div class="booking-stat-number">13+</div>
+                    <div class="booking-stat-label">Years Experience</div>
+                </div>
+                <div class="booking-stat">
+                    <div class="booking-stat-number">100%</div>
+                    <div class="booking-stat-label">Satisfaction Rate</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Overview -->
+    <section style="padding: 6rem 0; background: var(--primary-dark);">
+        <div class="container">
+            <div style="text-align: center; margin-bottom: 4rem;">
+                <h2 style="font-size: 3rem; color: var(--accent-gold); margin-bottom: 1rem;">Our Premium <span style="color: #f0a8c8;">Services</span></h2>
+                <p style="color: var(--text-muted); font-size: 1.05rem;">Complete event management solutions under one roof</p>
+            </div>
+
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem;">
+                <div style="text-align: center; padding: 2rem;">
+                    <div style="font-size: 3rem; color: var(--accent-gold); margin-bottom: 1rem;"><i class="fas fa-camera"></i></div>
+                    <h3 style="color: var(--accent-gold); margin-bottom: 0.5rem;">Photography & Videography</h3>
+                    <p style="color: var(--text-muted);">Professional coverage of every precious moment</p>
+                </div>
+                <div style="text-align: center; padding: 2rem;">
+                    <div style="font-size: 3rem; color: var(--accent-gold); margin-bottom: 1rem;"><i class="fas fa-paint-brush"></i></div>
+                    <h3 style="color: var(--accent-gold); margin-bottom: 0.5rem;">Decoration & Design</h3>
+                    <p style="color: var(--text-muted);">Stunning setups that bring your theme to life</p>
+                </div>
+                <div style="text-align: center; padding: 2rem;">
+                    <div style="font-size: 3rem; color: var(--accent-gold); margin-bottom: 1rem;"><i class="fas fa-music"></i></div>
+                    <h3 style="color: var(--accent-gold); margin-bottom: 0.5rem;">Entertainment</h3>
+                    <p style="color: var(--text-muted);">Music, dance, and performances that wow guests</p>
+                </div>
+                <div style="text-align: center; padding: 2rem;">
+                    <div style="font-size: 3rem; color: var(--accent-gold); margin-bottom: 1rem;"><i class="fas fa-utensils"></i></div>
+                    <h3 style="color: var(--accent-gold); margin-bottom: 0.5rem;">Catering</h3>
+                    <p style="color: var(--text-muted);">Delicious cuisine and professional service</p>
+                </div>
+                <div style="text-align: center; padding: 2rem;">
+                    <div style="font-size: 3rem; color: var(--accent-gold); margin-bottom: 1rem;"><i class="fas fa-lightbulb"></i></div>
+                    <h3 style="color: var(--accent-gold); margin-bottom: 0.5rem;">Lights & Sound</h3>
+                    <p style="color: var(--text-muted);">Premium technical setup and production</p>
+                </div>
+                <div style="text-align: center; padding: 2rem;">
+                    <div style="font-size: 3rem; color: var(--accent-gold); margin-bottom: 1rem;"><i class="fas fa-home"></i></div>
+                    <h3 style="color: var(--accent-gold); margin-bottom: 0.5rem;">Setup & Coordination</h3>
+                    <p style="color: var(--text-muted);">Complete venue management and logistics</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Final CTA -->
+    <section style="padding: 6rem 0; background: linear-gradient(135deg, rgba(232, 213, 55, 0.15), rgba(240, 168, 200, 0.1)); text-align: center; border-top: 1px solid var(--border-color);">
+        <div class="container">
+            <div style="max-width: 700px; margin: 0 auto;">
+                <h2 style="font-size: 2.5rem; color: var(--accent-gold); margin-bottom: 1rem;">Ready to Start Planning?</h2>
+                <p style="color: var(--text-muted); font-size: 1.05rem; margin-bottom: 2rem;">Get in touch with our team today and let's turn your dreams into reality. We'll guide you through every step of the process.</p>
+                
+                <div class="booking-cta">
+                    <a href="https://wa.me/8319111085?text=Hello%20DRV%20Events!%20I%20want%20to%20book%20an%20event." class="booking-btn booking-btn-primary">
+                        <i class="fas fa-phone-alt"></i> Call: 8319111085
+                    </a>
+                    <a href="contact.html" class="booking-btn booking-btn-secondary">
+                        <i class="fas fa-envelope"></i> Email Us
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>DRV Events</h3>
+                    <p>Premium Event Management & Wedding Planning</p>
+                    <div class="social-links">
+                        <a href="https://wa.me/8319111085" title="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+                        <a href="https://www.instagram.com/drvevents" title="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="https://www.facebook.com/drvevents.dewas" title="Facebook"><i class="fab fa-facebook"></i></a>
+                        <a href="mailto:inbox2drv@gmail.com" title="Email"><i class="fab fa-envelope"></i></a>
+                    </div>
+                </div>
+
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="../index.html">Home</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="services.html">Services</a></li>
+                        <li><a href="testimonials.html">Testimonials</a></li>
+                        <li><a href="happy-customers.html">Videos</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-section">
+                    <h3>Contact Info</h3>
+                    <p><i class="fas fa-map-marker-alt"></i> JAY NAGAR, 8, MIG, CIVIL LINES, KOTHI ROAD, Dewas, Madhya Pradesh</p>
+                    <p><i class="fas fa-phone"></i> <a href="tel:08871194663">088711 94663</a> | <a href="tel:8319111085">8319111085</a></p>
+                    <p><i class="fas fa-envelope"></i> <a href="mailto:inbox2drv@gmail.com">inbox2drv@gmail.com</a></p>
+                </div>
+
+                <div class="footer-section">
+                    <h3>Get in Touch</h3>
+                    <a href="contact.html" class="btn btn-secondary">Contact Form</a>
+                    <a href="careers.html" class="btn btn-secondary">Join Our Team</a>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2013-2026 DRV Events. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- WhatsApp Button -->
+    <a href="https://wa.me/8319111085?text=Hello%20DRV%20Events!" class="whatsapp-btn" title="Chat with us on WhatsApp">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <script src="../js/3d-elements.js"></script>
+    <script src="../js/main.js"></script>
+</body>
+</html>
