@@ -1,0 +1,1561 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="DRV Events - Premium Wedding Event Planner & Organizer in Dewas, Madhya Pradesh. 13+ Years Experience">
+    <title>DRV Events - Premium Wedding Event Planner & Organizer | Dewas</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+/* ========================================
+   DRV EVENTS - COMPLETE WEBSITE
+   ========================================= */
+
+:root {
+    --primary-dark: #0a0a0a;
+    --secondary-dark: #1a1a1a;
+    --accent-gold: #e8d537;
+    --accent-light-gold: #fff8e0;
+    --ivory-white: #f5f1f0;
+    --blush-pink: #f0a8c8;
+    --text-light: #e0e0e0;
+    --text-muted: #b0b0b0;
+    --accent-rose: #d4695c;
+    --border-color: rgba(232, 213, 55, 0.3);
+    --gradient-gold: linear-gradient(135deg, #e8d537, #fff8e0, #f0a8c8);
+    --box-shadow: 0 20px 60px rgba(232, 213, 55, 0.25);
+    --box-shadow-light: 0 10px 30px rgba(232, 213, 55, 0.2);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: var(--primary-dark);
+    color: var(--text-light);
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 700;
+}
+
+.section-title {
+    font-size: 3.5rem;
+    text-align: center;
+    margin-bottom: 1rem;
+    letter-spacing: 2px;
+}
+
+.section-subtitle {
+    text-align: center;
+    color: var(--text-muted);
+    font-size: 1.1rem;
+    margin-bottom: 3rem;
+}
+
+.accent {
+    color: var(--accent-gold);
+    text-shadow: 0 0 20px rgba(232, 213, 55, 0.8);
+    animation: glowPulse 2s ease-in-out infinite;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+}
+
+/* PAGE VISIBILITY */
+.page-section {
+    display: none;
+}
+
+.page-section.active {
+    display: block;
+    animation: fadeIn 0.5s ease-in;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+/* ========================================
+   NAVIGATION HEADER
+   ========================================= */
+
+.navbar {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+    background: rgba(10, 10, 10, 0.95);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--border-color);
+    padding: 0.8rem 0;
+}
+
+.navbar-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.navbar-logo a {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: var(--ivory-white);
+    text-decoration: none;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.navbar-logo a:hover {
+    color: var(--accent-gold);
+    text-shadow: 0 0 20px rgba(212, 175, 55, 0.4);
+}
+
+.logo-icon {
+    font-size: 2rem;
+    animation: pulse 2s infinite;
+}
+
+.logo-text {
+    font-family: 'Cormorant Garamond', serif;
+    letter-spacing: 2px;
+}
+
+@keyframes pulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+}
+
+.nav-menu {
+    display: flex;
+    gap: 0;
+}
+
+.nav-list {
+    display: flex;
+    list-style: none;
+    gap: 0;
+}
+
+.nav-link {
+    display: block;
+    padding: 0.8rem 1.5rem;
+    color: var(--text-light);
+    text-decoration: none;
+    position: relative;
+    transition: all 0.3s ease;
+    font-weight: 500;
+    cursor: pointer;
+}
+
+.nav-link::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: 0;
+    left: 50%;
+    background-color: var(--accent-gold);
+    transition: all 0.3s ease;
+    transform: translateX(-50%);
+}
+
+.nav-link:hover::after,
+.nav-link.active::after {
+    width: 100%;
+}
+
+.nav-link:hover {
+    color: var(--accent-gold);
+}
+
+.contact-btn-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.contact-btn {
+    padding: 0.8rem 1.5rem;
+    background: var(--gradient-gold);
+    color: var(--primary-dark);
+    text-decoration: none;
+    border-radius: 50px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    box-shadow: 0 5px 15px rgba(212, 175, 55, 0.3);
+    cursor: pointer;
+}
+
+.contact-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 25px rgba(212, 175, 55, 0.5);
+}
+
+/* ========================================
+   HERO SECTION
+   ========================================= */
+
+.hero {
+    position: relative;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 60px;
+    overflow: hidden;
+}
+
+.hero-3d-container {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 50%, #0f0f0f 100%);
+}
+
+.hero-slider {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+}
+
+.slider-wrapper {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+.slider-img {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0;
+    transition: opacity 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    filter: brightness(0.7) contrast(1.1);
+}
+
+.slider-img.active {
+    opacity: 0.5;
+    z-index: 1;
+    animation: imageZoom 0.8s ease-out;
+}
+
+@keyframes imageZoom {
+    from { transform: scale(1.05); }
+    to { transform: scale(1); }
+}
+
+.slider-controls {
+    position: absolute;
+    bottom: 3rem;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 1rem;
+    z-index: 10;
+}
+
+.slider-dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: rgba(232, 213, 55, 0.2);
+    border: 2px solid var(--accent-gold);
+    cursor: pointer;
+    transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+    box-shadow: 0 0 10px rgba(232, 213, 55, 0);
+}
+
+.slider-dot:hover {
+    box-shadow: 0 0 20px rgba(232, 213, 55, 0.4);
+    transform: scale(1.2);
+}
+
+.slider-dot.active {
+    background: var(--accent-gold);
+    width: 40px;
+    border-radius: 6px;
+    box-shadow: 0 0 30px rgba(232, 213, 55, 0.6);
+}
+
+.particles {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-image: 
+        radial-gradient(2px 2px at 20% 30%, #d4af37, rgba(212, 175, 55, 0)),
+        radial-gradient(2px 2px at 60% 70%, #e8d5d0, rgba(232, 213, 208, 0)),
+        radial-gradient(1px 1px at 50% 50%, #f0e6d2, rgba(240, 230, 210, 0)),
+        radial-gradient(1px 1px at 80% 10%, #d4af37, rgba(212, 175, 55, 0)),
+        radial-gradient(2px 2px at 90% 60%, #e8d5d0, rgba(232, 213, 208, 0));
+    background-repeat: repeat;
+    background-size: 200% 200%;
+    animation: particles-animation 20s ease infinite;
+    z-index: 2;
+}
+
+@keyframes particles-animation {
+    0% { background-position: 0% 0%; }
+    100% { background-position: 100% 100%; }
+}
+
+.hero-content {
+    position: relative;
+    z-index: 5;
+    text-align: center;
+    max-width: 900px;
+    animation: fadeInUp 1s ease-out;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.hero-title {
+    font-size: 4.5rem;
+    line-height: 1.2;
+    margin-bottom: 1rem;
+    font-weight: 700;
+    text-shadow: 0 5px 20px rgba(232, 213, 55, 0.5), 0 0 40px rgba(232, 213, 55, 0.3);
+    letter-spacing: 2px;
+    animation: textGlow 2s ease-in-out infinite;
+}
+
+@keyframes textGlow {
+    0%, 100% {
+        text-shadow: 0 5px 20px rgba(232, 213, 55, 0.5), 0 0 40px rgba(232, 213, 55, 0.3);
+    }
+    50% {
+        text-shadow: 0 5px 20px rgba(232, 213, 55, 0.8), 0 0 60px rgba(240, 168, 200, 0.5);
+    }
+}
+
+.gradient-text {
+    background: var(--gradient-gold);
+    background-size: 200% 200%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: gradientFlow 4s ease infinite;
+}
+
+@keyframes gradientFlow {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+.hero-tagline {
+    font-size: 1.3rem;
+    color: var(--text-muted);
+    margin-bottom: 2rem;
+    transition: all 0.4s ease;
+    animation: slideInTagline 0.8s ease-out 0.2s backwards;
+}
+
+@keyframes slideInTagline {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.company-highlight {
+    color: var(--accent-gold);
+    font-weight: 700;
+    text-shadow: 0 0 20px rgba(232, 213, 55, 0.8);
+    animation: companyPulse 2s ease-in-out infinite;
+}
+
+@keyframes companyPulse {
+    0%, 100% {
+        text-shadow: 0 0 20px rgba(232, 213, 55, 0.6);
+    }
+    50% {
+        text-shadow: 0 0 40px rgba(232, 213, 55, 1), 0 0 60px rgba(240, 168, 200, 0.5);
+    }
+}
+
+.hero-buttons {
+    display: flex;
+    gap: 1.5rem;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+/* BUTTONS */
+.btn {
+    padding: 1rem 2rem;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    border: none;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 1rem;
+}
+
+.btn-primary {
+    background: var(--gradient-gold);
+    color: var(--primary-dark);
+    box-shadow: 0 5px 15px rgba(232, 213, 55, 0.4);
+    transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+    position: relative;
+    overflow: hidden;
+}
+
+.btn-primary::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.2);
+    transition: left 0.5s ease;
+}
+
+.btn-primary:hover::before {
+    left: 100%;
+}
+
+.btn-primary:hover {
+    transform: translateY(-5px) scale(1.05);
+    box-shadow: 0 15px 45px rgba(232, 213, 55, 0.6), 0 0 30px rgba(232, 213, 55, 0.3);
+}
+
+.btn-secondary {
+    background: transparent;
+    color: var(--accent-gold);
+    border: 2px solid var(--accent-gold);
+    transition: all 0.4s ease;
+    position: relative;
+}
+
+.btn-secondary:hover {
+    background: var(--accent-gold);
+    color: var(--primary-dark);
+    transform: scale(1.05);
+    box-shadow: 0 0 30px rgba(232, 213, 55, 0.5);
+}
+
+/* ========================================
+   SECTION STYLES
+   ========================================= */
+
+.about {
+    padding: 6rem 0;
+    background: linear-gradient(180deg, var(--primary-dark), var(--secondary-dark));
+    border-top: 1px solid var(--border-color);
+    border-bottom: 1px solid var(--border-color);
+}
+
+.about-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+}
+
+.services-premium {
+    padding: 6rem 0;
+    background: linear-gradient(180deg, var(--secondary-dark), var(--primary-dark));
+    border-top: 1px solid var(--border-color);
+}
+
+.services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+}
+
+.service-card {
+    text-align: center;
+    padding: 2rem;
+    background: rgba(232, 213, 55, 0.05);
+    border: 1px solid var(--border-color);
+    border-radius: 10px;
+    transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+}
+
+.service-card:hover {
+    background: rgba(232, 213, 55, 0.15);
+    border-color: var(--accent-gold);
+    transform: translateY(-10px) scale(1.03);
+    box-shadow: 0 15px 50px rgba(232, 213, 55, 0.3), 0 0 30px rgba(232, 213, 55, 0.2);
+}
+
+.service-icon {
+    font-size: 3rem;
+    color: var(--accent-gold);
+    margin-bottom: 1rem;
+    transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.service-card:hover .service-icon {
+    transform: scale(1.4) rotate(15deg);
+    text-shadow: 0 0 30px rgba(232, 213, 55, 0.8), 0 0 50px rgba(240, 168, 200, 0.4);
+}
+
+.service-card h3 {
+    font-size: 1.3rem;
+    color: var(--accent-light-gold);
+    margin-bottom: 0.8rem;
+    transition: all 0.4s ease;
+}
+
+.service-card:hover h3 {
+    color: var(--accent-gold);
+    text-shadow: 0 0 20px rgba(232, 213, 55, 0.6);
+}
+
+.testimonials {
+    padding: 6rem 0;
+    background: linear-gradient(180deg, var(--secondary-dark), var(--primary-dark));
+    border-top: 1px solid var(--border-color);
+    border-bottom: 1px solid var(--border-color);
+}
+
+.testimonials-carousel {
+    position: relative;
+    max-width: 800px;
+    margin: 3rem auto;
+    perspective: 1000px;
+}
+
+.testimonial-item {
+    display: none;
+    opacity: 0;
+    transition: all 0.5s ease;
+    transform: translateX(50px);
+}
+
+.testimonial-item.active {
+    display: block;
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.testimonial-content {
+    background: rgba(232, 213, 55, 0.08);
+    border: 2px solid var(--border-color);
+    border-radius: 15px;
+    padding: 2rem;
+    text-align: center;
+    transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+    position: relative;
+    overflow: hidden;
+}
+
+.testimonial-content:hover {
+    border-color: var(--accent-gold);
+    transform: translateY(-8px) scale(1.02);
+    box-shadow: 0 15px 45px rgba(232, 213, 55, 0.25), 0 0 25px rgba(232, 213, 55, 0.15);
+}
+
+.testimonial-text {
+    color: var(--text-light);
+    font-size: 1rem;
+    line-height: 1.8;
+    margin-bottom: 1.5rem;
+    font-style: italic;
+}
+
+.testimonial-author {
+    display: block;
+    color: var(--accent-gold);
+    font-weight: 600;
+}
+
+.testimonials-controls {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-top: 2rem;
+}
+
+.testimonial-nav {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: var(--accent-gold);
+    color: var(--primary-dark);
+    border: none;
+    cursor: pointer;
+    font-size: 1.2rem;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.testimonial-nav:hover {
+    transform: scale(1.1);
+    box-shadow: 0 5px 15px rgba(212, 175, 55, 0.3);
+}
+
+/* CONTACT FORM */
+.contact {
+    padding: 6rem 0;
+    background: var(--primary-dark);
+}
+
+.contact-form {
+    max-width: 600px;
+    margin: 3rem auto;
+    display: grid;
+    gap: 1.5rem;
+}
+
+.form-group {
+    display: grid;
+    gap: 0.5rem;
+}
+
+.form-group label {
+    color: var(--accent-gold);
+    font-weight: 600;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+    width: 100%;
+    padding: 1rem;
+    background: rgba(232, 213, 55, 0.1);
+    border: 2px solid #e8d537;
+    border-radius: 8px;
+    color: #ffffff;
+    font-family: inherit;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: var(--accent-gold);
+    box-shadow: 0 0 20px rgba(232, 213, 55, 0.5);
+    background: rgba(232, 213, 55, 0.2);
+}
+
+.form-group option {
+    background: #1a1a1a;
+    color: #ffffff;
+}
+
+/* FOOTER */
+.footer {
+    background: var(--primary-dark);
+    border-top: 1px solid var(--border-color);
+    padding: 4rem 0 2rem;
+    text-align: center;
+    color: var(--text-muted);
+}
+
+.footer-content {
+    margin-bottom: 2rem;
+}
+
+.footer h3 {
+    color: var(--accent-gold);
+    margin-bottom: 1rem;
+}
+
+.social-links {
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+    margin: 1.5rem 0;
+}
+
+.social-links a {
+    color: var(--accent-gold);
+    font-size: 1.8rem;
+    transition: all 0.3s ease;
+    text-decoration: none;
+}
+
+.social-links a:hover {
+    transform: scale(1.2) rotate(10deg);
+    text-shadow: 0 0 20px rgba(232, 213, 55, 0.6);
+}
+
+/* PAGE HEADER */
+.page-header {
+    margin-top: 60px;
+    padding: 4rem 0;
+    background: linear-gradient(135deg, rgba(212, 175, 55, 0.1), rgba(232, 213, 208, 0.05));
+    border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+    text-align: center;
+}
+
+.page-header h1 {
+    font-size: 3.5rem;
+    margin-bottom: 1rem;
+    color: var(--accent-gold);
+}
+
+.page-header p {
+    color: var(--text-muted);
+    font-size: 1.1rem;
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+    .about-content,
+    .why-us-content {
+        grid-template-columns: 1fr;
+    }
+    
+    .hero-title {
+        font-size: 2.5rem;
+    }
+    
+    .section-title {
+        font-size: 2rem;
+    }
+    
+    .services-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* ANIMATIONS */
+@keyframes glowPulse {
+    0%, 100% { text-shadow: 0 0 20px rgba(232, 213, 55, 0.6); }
+    50% { text-shadow: 0 0 40px rgba(232, 213, 55, 1), 0 0 60px rgba(240, 168, 200, 0.5); }
+}
+
+@keyframes borderPulse {
+    0%, 100% { box-shadow: 0 0 0 0 rgba(232, 213, 55, 0.3); }
+    50% { box-shadow: 0 0 20px 10px rgba(232, 213, 55, 0); }
+}
+
+@keyframes colorShift {
+    0% { color: #e8d537; }
+    50% { color: #f0a8c8; }
+    100% { color: #e8d537; }
+}
+
+@keyframes shimmer {
+    0% { background-position: -1000px 0; }
+    100% { background-position: 1000px 0; }
+}
+
+@keyframes hoverLift {
+    0% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+    100% { transform: translateY(0); }
+}
+
+@keyframes rotateGlow {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+@keyframes floatParallax {
+    0%, 100% { transform: translateY(0px) translateX(0px) rotate(0deg); }
+    25% { transform: translateY(-20px) translateX(10px) rotate(5deg); }
+    50% { transform: translateY(-40px) translateX(0px) rotate(0deg); }
+    75% { transform: translateY(-20px) translateX(-10px) rotate(-5deg); }
+}
+
+@keyframes deepFloat {
+    0%, 100% { transform: translateZ(-50px); }
+    50% { transform: translateZ(50px); }
+}
+    </style>
+</head>
+<body>
+    <!-- NAVIGATION -->
+    <header class="navbar">
+        <div class="navbar-container">
+            <div class="navbar-logo">
+                <a onclick="showPage('home')" style="cursor: pointer;">
+                    <span class="logo-icon">✨</span>
+                    <span class="logo-text">DRV Events</span>
+                </a>
+            </div>
+
+            <nav class="nav-menu">
+                <ul class="nav-list">
+                    <li><a class="nav-link active" onclick="showPage('home')">Home</a></li>
+                    <li><a class="nav-link" onclick="showPage('about')">About Us</a></li>
+                    <li><a class="nav-link" onclick="showPage('services')">Services</a></li>
+                    <li><a class="nav-link" onclick="showPage('testimonials')">Testimonials</a></li>
+                    <li><a class="nav-link" onclick="showPage('booking')">Booking</a></li>
+                    <li><a class="nav-link" onclick="showPage('contact')">Contact</a></li>
+                </ul>
+            </nav>
+
+            <div class="contact-btn-wrapper">
+                <a href="tel:8319111085" class="contact-btn">
+                    <i class="fas fa-phone"></i> Call Now
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- HOME PAGE -->
+    <section id="home" class="page-section active">
+        <div class="hero">
+            <div class="hero-3d-container" id="hero3D"></div>
+            
+            <div class="hero-content">
+                <div class="hero-text">
+                    <h1 class="hero-title">
+                        Let's Create<br>
+                        <span class="gradient-text">Unforgettable Memories</span>
+                    </h1>
+                    <p class="hero-tagline">With <span class="company-highlight">DRV Events</span> - Wedding Event Planner & Organizer</p>
+                    <div class="hero-buttons">
+                        <a href="tel:8319111085" class="btn btn-primary">
+                            <span>Plan Your Dream Event</span>
+                            <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="particles" id="particles"></div>
+
+            <div class="hero-slider">
+                <div class="slider-wrapper">
+                    <img src="https://lh3.googleusercontent.com/gps-cs-s/AHVAweqb2Iuk8q9j1_c5hX7xikcAxs_kwKG_n0bRdjDZXX1CbWUIFeRHdudTEBgSWDpyFwlZhPEqn2zSxG8z8sePkF5JUR-uv81R7vJHg5Kq42NCWLXmIxZ_hDg6Sd0hjKp3qnwKcfgS_pdeV_KI=s1360-w1360-h1020-rw" alt="Wedding Event 1" class="slider-img active">
+                    <img src="https://lh3.googleusercontent.com/gps-cs-s/AHVAwerXCqxJqHwsaGFbSUz2sNqS9f3-bYBY6ovE0Go8WZNEQ4_o0SXYrqO4tvE6LmU2-tm8AYy4_kgDhyzvivtjxq6L1Ad1rJt0LSEXXcYfHuH_ytOjgPk1WlzdUEj1TfIqBtm1He8p6aovZ6l6=s1360-w1360-h1020-rw" alt="Wedding Event 2" class="slider-img">
+                    <img src="https://lh3.googleusercontent.com/gps-cs-s/AHVAweoyOIE6dQv3PxhaiyOaqnXN1jNygyf5aAeuro8xgvJjYXKPR2ZCZWbKfq3q-OGnE1lWL2MF5zhIYNVmlNNHZAtFqNmBI2rl1R1Audx84ERrsRrdhOlvRhYTh8cnoVhHmzuQsuE=s1360-w1360-h1020-rw" alt="Wedding Event 3" class="slider-img">
+                    <img src="https://i.pinimg.com/564x/42/9b/af/429baf18cbb66c62afa1fcb44918dd6e.jpg" alt="Wedding Event 4" class="slider-img">
+                </div>
+                <div class="slider-controls">
+                    <button class="slider-dot active" data-index="0" onclick="goToSlide(0)"></button>
+                    <button class="slider-dot" data-index="1" onclick="goToSlide(1)"></button>
+                    <button class="slider-dot" data-index="2" onclick="goToSlide(2)"></button>
+                    <button class="slider-dot" data-index="3" onclick="goToSlide(3)"></button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Services Preview -->
+        <section class="services-premium">
+            <div class="container">
+                <h2 class="section-title">Our <span class="accent">Services</span></h2>
+                <div class="services-grid">
+                    <div class="service-card">
+                        <div class="service-icon">💍</div>
+                        <h3>Wedding Planning</h3>
+                        <p>Complete wedding management from theme to execution</p>
+                    </div>
+                    <div class="service-card">
+                        <div class="service-icon">🎉</div>
+                        <h3>Corporate Events</h3>
+                        <p>Professional corporate event planning and coordination</p>
+                    </div>
+                    <div class="service-card">
+                        <div class="service-icon">🎂</div>
+                        <h3>Birthday Parties</h3>
+                        <p>Memorable birthday celebrations for all ages</p>
+                    </div>
+                    <div class="service-card">
+                        <div class="service-icon">🎭</div>
+                        <h3>Entertainment</h3>
+                        <p>DJ, performances, and entertainment services</p>
+                    </div>
+                    <div class="service-card">
+                        <div class="service-icon">🌺</div>
+                        <h3>Decoration</h3>
+                        <p>Premium decoration services with latest designs</p>
+                    </div>
+                    <div class="service-card">
+                        <div class="service-icon">📸</div>
+                        <h3>Photography</h3>
+                        <p>Professional photography and videography</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </section>
+
+    <!-- ABOUT PAGE -->
+    <section id="about" class="page-section">
+        <div class="page-header">
+            <div class="container">
+                <h1>About DRV Events</h1>
+                <p>Premium Event Management since 2013</p>
+            </div>
+        </div>
+
+        <div class="about">
+            <div class="container">
+                <div class="about-content">
+                    <div class="about-text">
+                        <h2 class="section-title">About <span class="accent">Us</span></h2>
+                        <p style="color: var(--text-muted); margin-bottom: 1.5rem; line-height: 1.8;">
+                            DRV Events has been creating unforgettable moments for over 13 years. We specialize in planning and organizing premium events including weddings, corporate functions, celebrations, and special occasions.
+                        </p>
+                        <p style="color: var(--text-muted); margin-bottom: 1.5rem; line-height: 1.8;">
+                            Our team of experienced professionals is committed to bringing your dreams to life with perfection, dedication, and innovation.
+                        </p>
+                        <h3 style="color: var(--accent-gold); margin: 1.5rem 0;">Why Choose DRV Events?</h3>
+                        <ul style="list-style: none; display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+                            <li><i class="fas fa-check" style="color: var(--accent-gold); margin-right: 0.5rem;"></i>13+ Years Experience</li>
+                            <li><i class="fas fa-check" style="color: var(--accent-gold); margin-right: 0.5rem;"></i>1000+ Happy Families</li>
+                            <li><i class="fas fa-check" style="color: var(--accent-gold); margin-right: 0.5rem;"></i>500+ Completed Events</li>
+                            <li><i class="fas fa-check" style="color: var(--accent-gold); margin-right: 0.5rem;"></i>100% Satisfaction</li>
+                            <li><i class="fas fa-check" style="color: var(--accent-gold); margin-right: 0.5rem;"></i>Professional Team</li>
+                            <li><i class="fas fa-check" style="color: var(--accent-gold); margin-right: 0.5rem;"></i>Customized Solutions</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SERVICES PAGE -->
+    <section id="services" class="page-section">
+        <div class="page-header">
+            <div class="container">
+                <h1>Our Services</h1>
+                <p>Comprehensive event planning and coordination</p>
+            </div>
+        </div>
+
+        <section class="services-premium">
+            <div class="container">
+                <div class="services-grid">
+                    <div class="service-card">
+                        <div class="service-icon">💍</div>
+                        <h3>Wedding Management</h3>
+                        <p>Complete wedding planning from theme selection to post-wedding services including haldi, mehendi, sangeet, baraat, and reception management.</p>
+                    </div>
+                    <div class="service-card">
+                        <div class="service-icon">🎂</div>
+                        <h3>Birthday Celebrations</h3>
+                        <p>Memorable birthday events with decorations, entertainment, catering, and customized themes for all ages.</p>
+                    </div>
+                    <div class="service-card">
+                        <div class="service-icon">💒</div>
+                        <h3>Anniversary Events</h3>
+                        <p>Celebrate your special milestones with our anniversary planning and decoration services.</p>
+                    </div>
+                    <div class="service-card">
+                        <div class="service-icon">💼</div>
+                        <h3>Corporate Events</h3>
+                        <p>Professional corporate event management including product launches, conferences, team building, and annual functions.</p>
+                    </div>
+                    <div class="service-card">
+                        <div class="service-icon">🎭</div>
+                        <h3>Entertainment Services</h3>
+                        <p>DJ nights, live performances, music events, karaoke, and entertainment coordination.</p>
+                    </div>
+                    <div class="service-card">
+                        <div class="service-icon">🌺</div>
+                        <h3>Decoration & Setup</h3>
+                        <p>Premium decoration services, venue setup, theme implementation, and ambiance creation.</p>
+                    </div>
+                    <div class="service-card">
+                        <div class="service-icon">🍽️</div>
+                        <h3>Catering Coordination</h3>
+                        <p>Partner with premium caterers and manage food service for your events.</p>
+                    </div>
+                    <div class="service-card">
+                        <div class="service-icon">📸</div>
+                        <h3>Photography & Video</h3>
+                        <p>Professional photography and videography services to capture your precious moments.</p>
+                    </div>
+                    <div class="service-card">
+                        <div class="service-icon">🎓</div>
+                        <h3>Educational Events</h3>
+                        <p>School functions, college events, convocation ceremonies, and farewell parties.</p>
+                    </div>
+                    <div class="service-card">
+                        <div class="service-icon">👶</div>
+                        <h3>Baby Shower & Naming</h3>
+                        <p>Elegant baby shower and naming ceremony planning with themes and entertainment.</p>
+                    </div>
+                    <div class="service-card">
+                        <div class="service-icon">💍</div>
+                        <h3>Engagement Functions</h3>
+                        <p>Complete engagement ceremony planning and coordination with all details.</p>
+                    </div>
+                    <div class="service-card">
+                        <div class="service-icon">✨</div>
+                        <h3>Customized Events</h3>
+                        <p>Any special event or occasion - we customize our services to fit your unique needs.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </section>
+
+    <!-- TESTIMONIALS PAGE -->
+    <section id="testimonials" class="page-section">
+        <div class="page-header">
+            <div class="container">
+                <h1>Customer Testimonials</h1>
+                <p>What our happy clients say about us</p>
+            </div>
+        </div>
+
+        <section class="testimonials">
+            <div class="container">
+                <div class="testimonials-carousel">
+                    <div class="testimonial-item active">
+                        <div class="testimonial-content">
+                            <p class="testimonial-text">"DRV Events made our wedding day absolutely magical! Every detail was perfect. Highly recommended!"</p>
+                            <span class="testimonial-author">- Priya & Aditya</span>
+                        </div>
+                    </div>
+                    <div class="testimonial-item">
+                        <div class="testimonial-content">
+                            <p class="testimonial-text">"Professional team, excellent coordination, and beyond expectations. Thank you DRV Events!"</p>
+                            <span class="testimonial-author">- Rahul & Deepika</span>
+                        </div>
+                    </div>
+                    <div class="testimonial-item">
+                        <div class="testimonial-content">
+                            <p class="testimonial-text">"Our corporate event was a huge success. DRV Events handled everything flawlessly."</p>
+                            <span class="testimonial-author">- Mr. Sharma, Event Manager</span>
+                        </div>
+                    </div>
+                    <div class="testimonial-item">
+                        <div class="testimonial-content">
+                            <p class="testimonial-text">"13+ years of experience really shows. Absolutely outstanding service!"</p>
+                            <span class="testimonial-author">- Mrs. Gupta</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="testimonials-controls">
+                    <button class="testimonial-nav" id="prevTestimonial" onclick="prevTestimonial()"><i class="fas fa-chevron-left"></i></button>
+                    <button class="testimonial-nav" id="nextTestimonial" onclick="nextTestimonial()"><i class="fas fa-chevron-right"></i></button>
+                </div>
+            </div>
+        </section>
+    </section>
+
+    <!-- BOOKING PAGE -->
+    <section id="booking" class="page-section">
+        <div class="page-header">
+            <div class="container">
+                <h1>Ready to Plan Your Dream Event?</h1>
+                <p>Let's make your event unforgettable</p>
+            </div>
+        </div>
+
+        <section style="padding: 6rem 0; background: var(--secondary-dark);">
+            <div class="container">
+                <p style="text-align: center; color: var(--text-muted); font-size: 1.1rem; max-width: 800px; margin: 0 auto 3rem;">
+                    Contact us today to discuss your event requirements and get a customized quote. Our team is ready to bring your vision to life!
+                </p>
+
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem; margin-bottom: 3rem;">
+                    <div style="text-align: center; padding: 2rem; background: rgba(232, 213, 55, 0.05); border-radius: 10px; border: 1px solid var(--border-color);">
+                        <div style="font-size: 2.5rem; color: var(--accent-gold); margin-bottom: 1rem;">🎯</div>
+                        <h3 style="color: var(--accent-gold); margin-bottom: 0.5rem;">100% Customized</h3>
+                        <p style="color: var(--text-muted);">Your event, your way with complete customization</p>
+                    </div>
+                    <div style="text-align: center; padding: 2rem; background: rgba(232, 213, 55, 0.05); border-radius: 10px; border: 1px solid var(--border-color);">
+                        <div style="font-size: 2.5rem; color: var(--accent-gold); margin-bottom: 1rem;">👥</div>
+                        <h3 style="color: var(--accent-gold); margin-bottom: 0.5rem;">Expert Planning</h3>
+                        <p style="color: var(--text-muted);">13+ years of experience in event management</p>
+                    </div>
+                    <div style="text-align: center; padding: 2rem; background: rgba(232, 213, 55, 0.05); border-radius: 10px; border: 1px solid var(--border-color);">
+                        <div style="font-size: 2.5rem; color: var(--accent-gold); margin-bottom: 1rem;">😌</div>
+                        <h3 style="color: var(--accent-gold); margin-bottom: 0.5rem;">Stress-Free</h3>
+                        <p style="color: var(--text-muted);">We handle everything so you can enjoy your event</p>
+                    </div>
+                </div>
+
+                <div style="text-align: center;">
+                    <a href="tel:8319111085" class="btn btn-primary">
+                        <i class="fas fa-phone"></i> Call Now to Book
+                    </a>
+                    <a href="https://wa.me/8319111085" class="btn btn-secondary" style="margin-left: 1rem;">
+                        <i class="fab fa-whatsapp"></i> WhatsApp Us
+                    </a>
+                </div>
+            </div>
+        </section>
+    </section>
+
+    <!-- CONTACT PAGE -->
+    <section id="contact" class="page-section">
+        <div class="page-header">
+            <div class="container">
+                <h1>Contact Us</h1>
+                <p>Get in touch with DRV Events</p>
+            </div>
+        </div>
+
+        <section class="contact">
+            <div class="container">
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; margin-bottom: 4rem;">
+                    <!-- Contact Info -->
+                    <div>
+                        <h2 style="font-size: 2rem; margin-bottom: 2rem; color: var(--accent-gold);">Contact Information</h2>
+                        
+                        <div style="margin-bottom: 2rem;">
+                            <h3 style="color: var(--accent-gold); margin-bottom: 0.5rem; display: flex; align-items: center; gap: 1rem;">
+                                <i class="fas fa-map-marker-alt"></i>Address
+                            </h3>
+                            <p style="color: var(--text-muted); line-height: 1.8;">
+                                JAY NAGAR, 8, MIG, CIVIL LINES, KOTHI ROAD<br>
+                                Dewas, Madhya Pradesh 455001<br>
+                                India
+                            </p>
+                        </div>
+
+                        <div style="margin-bottom: 2rem;">
+                            <h3 style="color: var(--accent-gold); margin-bottom: 0.5rem; display: flex; align-items: center; gap: 1rem;">
+                                <i class="fas fa-phone"></i>Phone
+                            </h3>
+                            <p style="color: var(--text-muted);">
+                                <a href="tel:08871194663" style="color: var(--text-light); text-decoration: none;">088711 94663</a><br>
+                                <a href="tel:8319111085" style="color: var(--text-light); text-decoration: none;">8319111085</a>
+                            </p>
+                        </div>
+
+                        <div style="margin-bottom: 2rem;">
+                            <h3 style="color: var(--accent-gold); margin-bottom: 0.5rem; display: flex; align-items: center; gap: 1rem;">
+                                <i class="fas fa-envelope"></i>Email
+                            </h3>
+                            <p style="color: var(--text-muted);">
+                                <a href="mailto:inbox2drv@gmail.com" style="color: var(--text-light); text-decoration: none;">inbox2drv@gmail.com</a>
+                            </p>
+                        </div>
+
+                        <div style="margin-bottom: 2rem;">
+                            <h3 style="color: var(--accent-gold); margin-bottom: 0.5rem; display: flex; align-items: center; gap: 1rem;">
+                                <i class="fas fa-clock"></i>Hours
+                            </h3>
+                            <p style="color: var(--text-muted);">
+                                Monday - Sunday<br>
+                                9:00 AM - 10:00 PM
+                            </p>
+                        </div>
+
+                        <div>
+                            <h3 style="color: var(--accent-gold); margin-bottom: 1rem; display: flex; align-items: center; gap: 1rem;">
+                                <i class="fas fa-share-alt"></i>Follow Us
+                            </h3>
+                            <div class="social-links">
+                                <a href="https://wa.me/8319111085" title="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+                                <a href="https://www.instagram.com/drvevents" title="Instagram"><i class="fab fa-instagram"></i></a>
+                                <a href="https://www.facebook.com/drvevents.dewas" title="Facebook"><i class="fab fa-facebook"></i></a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Contact Form -->
+                    <div>
+                        <h2 style="font-size: 2rem; margin-bottom: 2rem; color: var(--accent-gold);">Send us a Message</h2>
+                        <form id="contactForm" class="contact-form" onsubmit="handleContactForm(event)">
+                            <div class="form-group">
+                                <label>Your Name</label>
+                                <input type="text" name="name" required>
+                            </div>
+                            <div class="form-group">
+                                <label>Your Email</label>
+                                <input type="email" name="email" required>
+                            </div>
+                            <div class="form-group">
+                                <label>Phone Number</label>
+                                <input type="tel" name="phone" required>
+                            </div>
+                            <div class="form-group">
+                                <label>Event Type</label>
+                                <select name="eventType" required>
+                                    <option value="">-- Select Event Type --</option>
+                                    <optgroup label="📍 Weddings & Celebrations">
+                                        <option value="Complete Wedding">Complete Wedding Planning</option>
+                                        <option value="Haldi">Haldi Ceremony</option>
+                                        <option value="Mehendi">Mehendi Event</option>
+                                        <option value="Sangeet">Sangeet Night</option>
+                                        <option value="Baraat">Baraat Management</option>
+                                        <option value="Reception">Wedding Reception</option>
+                                        <option value="Pre-Wedding">Pre-Wedding Shoot</option>
+                                    </optgroup>
+                                    <optgroup label="🎉 Personal Celebrations">
+                                        <option value="Birthday">Birthday Party</option>
+                                        <option value="Anniversary">Anniversary Celebration</option>
+                                        <option value="Baby Shower">Baby Shower</option>
+                                        <option value="Engagement">Engagement Ceremony</option>
+                                    </optgroup>
+                                    <optgroup label="🎓 Educational Events">
+                                        <option value="School Function">School Function</option>
+                                        <option value="College Event">College Event</option>
+                                        <option value="Convocation">Convocation Ceremony</option>
+                                        <option value="Farewell">Farewell Party</option>
+                                        <option value="Annual Fest">Annual Fest/Competition</option>
+                                    </optgroup>
+                                    <optgroup label="💼 Corporate Events">
+                                        <option value="Product Launch">Product Launch</option>
+                                        <option value="Team Building">Team Building Event</option>
+                                        <option value="Conference">Conference/Seminar</option>
+                                        <option value="Corporate Dinner">Corporate Dinner</option>
+                                        <option value="Award Ceremony">Award Ceremony</option>
+                                        <option value="Customer Meet">Customer Meet</option>
+                                    </optgroup>
+                                    <optgroup label="🎵 Entertainment & Music">
+                                        <option value="Live Performance">Live Performance/Concert</option>
+                                        <option value="DJ Dance">DJ Dance Night</option>
+                                        <option value="Music Event">Music Event</option>
+                                        <option value="Karaoke">Karaoke Night</option>
+                                    </optgroup>
+                                    <optgroup label="✨ Other Events">
+                                        <option value="Photoshoot">Photography/Videography Session</option>
+                                        <option value="Decoration">Decoration Services Only</option>
+                                        <option value="Catering">Catering Services</option>
+                                        <option value="Venue Setup">Venue Setup & Coordination</option>
+                                        <option value="Customized">Customized Event</option>
+                                        <option value="Other">Other</option>
+                                    </optgroup>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label>Your Message</label>
+                                <textarea name="message" rows="5" required></textarea>
+                            </div>
+                            <button type="submit" class="btn btn-primary" style="width: 100%; margin-top: 1rem;">
+                                <i class="fas fa-paper-plane"></i> Send Message
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <h3>DRV Events</h3>
+                <p>Premium Event Management Since 2013</p>
+                <p style="font-size: 0.9rem; margin-top: 1rem;">© 2026 DRV Events. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+// ==========================================
+// PAGE NAVIGATION
+// ==========================================
+
+function showPage(pageId) {
+    // Hide all pages
+    const pages = document.querySelectorAll('.page-section');
+    pages.forEach(page => page.classList.remove('active'));
+    
+    // Show selected page
+    const selectedPage = document.getElementById(pageId);
+    if (selectedPage) {
+        selectedPage.classList.add('active');
+        window.scrollTo(0, 0);
+    }
+    
+    // Update nav links
+    const navLinks = document.querySelectorAll('.nav-link');
+    navLinks.forEach(link => link.classList.remove('active'));
+    event.target.classList.add('active');
+}
+
+// ==========================================
+// SLIDER FUNCTIONS
+// ==========================================
+
+let currentSliderIndex = 0;
+let sliderAutoPlayInterval;
+
+function initializeSlider() {
+    const sliderDots = document.querySelectorAll('.slider-dot');
+    
+    sliderDots.forEach((dot) => {
+        dot.addEventListener('click', function() {
+            clearInterval(sliderAutoPlayInterval);
+            goToSlide(parseInt(this.getAttribute('data-index')));
+            startSliderAutoplay();
+        });
+    });
+    
+    startSliderAutoplay();
+}
+
+function showSlide(index) {
+    const sliderImgs = document.querySelectorAll('.slider-img');
+    const sliderDots = document.querySelectorAll('.slider-dot');
+
+    if (index >= sliderImgs.length) {
+        currentSliderIndex = 0;
+    } else if (index < 0) {
+        currentSliderIndex = sliderImgs.length - 1;
+    } else {
+        currentSliderIndex = index;
+    }
+
+    sliderImgs.forEach(img => img.classList.remove('active'));
+    sliderDots.forEach(dot => dot.classList.remove('active'));
+
+    sliderImgs[currentSliderIndex].classList.add('active');
+    sliderDots[currentSliderIndex].classList.add('active');
+}
+
+function goToSlide(index) {
+    showSlide(index);
+}
+
+function nextSlide() {
+    showSlide(currentSliderIndex + 1);
+}
+
+function prevSlide() {
+    showSlide(currentSliderIndex - 1);
+}
+
+function startSliderAutoplay() {
+    sliderAutoPlayInterval = setInterval(() => {
+        nextSlide();
+    }, 3000);
+}
+
+// ==========================================
+// TESTIMONIALS CAROUSEL
+// ==========================================
+
+let currentTestimonialIndex = 0;
+
+function nextTestimonial() {
+    currentTestimonialIndex++;
+    showTestimonial();
+}
+
+function prevTestimonial() {
+    currentTestimonialIndex--;
+    showTestimonial();
+}
+
+function showTestimonial() {
+    const testimonialItems = document.querySelectorAll('.testimonial-item');
+
+    if (currentTestimonialIndex >= testimonialItems.length) {
+        currentTestimonialIndex = 0;
+    } else if (currentTestimonialIndex < 0) {
+        currentTestimonialIndex = testimonialItems.length - 1;
+    }
+
+    testimonialItems.forEach(item => item.classList.remove('active'));
+    testimonialItems[currentTestimonialIndex].classList.add('active');
+}
+
+// ==========================================
+// FORM HANDLING
+// ==========================================
+
+function handleContactForm(event) {
+    event.preventDefault();
+    
+    const form = event.target;
+    const formData = new FormData(form);
+
+    let message = 'Hello DRV Events,\n\n';
+    
+    for (let [key, value] of formData) {
+        message += `${key.charAt(0).toUpperCase() + key.slice(1)}: ${value}\n`;
+    }
+
+    const encodedMessage = encodeURIComponent(message);
+    const whatsappUrl = `https://wa.me/8319111085?text=${encodedMessage}`;
+    
+    window.open(whatsappUrl, '_blank');
+    form.reset();
+    
+    showNotification('Form submitted! WhatsApp will open with your details.');
+}
+
+function showNotification(message) {
+    const notification = document.createElement('div');
+    notification.textContent = message;
+    notification.style.cssText = `
+        position: fixed;
+        top: 20px;
+        right: 20px;
+        background: #25d366;
+        color: white;
+        padding: 1rem 2rem;
+        border-radius: 50px;
+        box-shadow: 0 5px 20px rgba(0,0,0,0.3);
+        z-index: 9999;
+        animation: slideIn 0.3s ease;
+    `;
+
+    document.body.appendChild(notification);
+
+    setTimeout(() => {
+        notification.style.animation = 'slideOut 0.3s ease';
+        setTimeout(() => notification.remove(), 300);
+    }, 3000);
+}
+
+// ==========================================
+// 3D EFFECTS & PARTICLES
+// ==========================================
+
+function initialize3D() {
+    createParticleEffects();
+    createFloatingElements();
+    initializeHeroAnimation();
+}
+
+function createFloatingElements() {
+    const hero3DContainer = document.getElementById('hero3D');
+    if (!hero3DContainer) return;
+
+    hero3DContainer.style.cssText = `
+        perspective: 1000px;
+        transform-style: preserve-3d;
+    `;
+
+    const elements = [
+        { icon: '💍', delay: 0 },
+        { icon: '💐', delay: 1 },
+        { icon: '✨', delay: 2 },
+        { icon: '🕯️', delay: 3 },
+        { icon: '🎭', delay: 4 },
+        { icon: '👑', delay: 5 },
+        { icon: '💎', delay: 6 },
+        { icon: '🌹', delay: 7 }
+    ];
+
+    elements.forEach((el) => {
+        const floatingEl = document.createElement('div');
+        floatingEl.textContent = el.icon;
+        floatingEl.style.cssText = `
+            position: absolute;
+            font-size: ${4 + Math.random() * 2}rem;
+            opacity: ${0.15 + Math.random() * 0.15};
+            animation: floatParallax ${20 + Math.random() * 15}s infinite ease-in-out;
+            animation-delay: ${el.delay * 1.5}s;
+            top: ${Math.random() * 80 + 10}%;
+            left: ${Math.random() * 80 + 10}%;
+            pointer-events: none;
+            filter: drop-shadow(0 0 30px rgba(232, 213, 55, 0.5)) drop-shadow(0 0 20px rgba(240, 168, 200, 0.3));
+        `;
+        hero3DContainer.appendChild(floatingEl);
+    });
+}
+
+function initializeHeroAnimation() {
+    const heroContent = document.querySelector('.hero-content');
+    if (!heroContent) return;
+
+    document.addEventListener('mousemove', (e) => {
+        const moveX = (e.clientX / window.innerWidth) * 20 - 10;
+        const moveY = (e.clientY / window.innerHeight) * 20 - 10;
+
+        heroContent.style.transform = `
+            perspective(1000px)
+            rotateX(${moveY * 0.5}deg)
+            rotateY(${moveX * 0.5}deg)
+            translateZ(20px)
+        `;
+    });
+
+    document.addEventListener('mouseleave', () => {
+        heroContent.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) translateZ(0)';
+    });
+}
+
+function createParticleEffects() {
+    const particlesContainer = document.getElementById('particles');
+    if (!particlesContainer) return;
+
+    const particleCount = 100;
+    const particleColors = [
+        'rgba(232, 213, 55, ',
+        'rgba(240, 168, 200, ',
+        'rgba(255, 248, 224, '
+    ];
+    
+    for (let i = 0; i < particleCount; i++) {
+        const particle = document.createElement('div');
+        const colorBase = particleColors[Math.floor(Math.random() * particleColors.length)];
+        const opacity = Math.random() * 0.8 + 0.2;
+        const size = Math.random() * 5 + 1;
+        const duration = Math.random() * 25 + 15;
+        
+        particle.style.cssText = `
+            position: absolute;
+            width: ${size}px;
+            height: ${size}px;
+            background: radial-gradient(circle, ${colorBase}${opacity}), transparent);
+            border-radius: 50%;
+            left: ${Math.random() * 100}%;
+            top: ${Math.random() * 100}%;
+            box-shadow: 0 0 ${Math.random() * 15 + 5}px ${colorBase}${Math.max(opacity * 0.8, 0.3)});
+            animation: floatParallax ${duration}s infinite ease-in-out;
+            animation-delay: ${Math.random() * 8}s;
+            pointer-events: none;
+        `;
+        particlesContainer.appendChild(particle);
+    }
+}
+
+// ==========================================
+// INITIALIZE ON PAGE LOAD
+// ==========================================
+
+document.addEventListener('DOMContentLoaded', function() {
+    initializeSlider();
+    initialize3D();
+});
+    </script>
+</body>
+</html>

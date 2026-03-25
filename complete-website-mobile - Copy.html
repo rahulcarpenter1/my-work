@@ -1,0 +1,1258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="DRV Events - Premium Wedding Event Planner & Organizer in Dewas">
+    <title>DRV Events - Premium Wedding Planner | Dewas</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+/* ========================================
+   MOBILE-FIRST RESPONSIVE DESIGN
+   ========================================= */
+
+:root {
+    --primary-dark: #0a0a0a;
+    --secondary-dark: #1a1a1a;
+    --accent-gold: #e8d537;
+    --accent-light-gold: #fff8e0;
+    --blush-pink: #f0a8c8;
+    --text-light: #e0e0e0;
+    --text-muted: #b0b0b0;
+    --accent-rose: #d4695c;
+    --border-color: rgba(232, 213, 55, 0.3);
+    --gradient-gold: linear-gradient(135deg, #e8d537, #fff8e0, #f0a8c8);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+    font-size: 16px;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: var(--primary-dark);
+    color: var(--text-light);
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 700;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1rem;
+}
+
+/* PAGE VISIBILITY */
+.page-section {
+    display: none;
+}
+
+.page-section.active {
+    display: block;
+}
+
+/* ========================================
+   NAVIGATION - MOBILE FIRST
+   ========================================= */
+
+.navbar {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+    background: rgba(10, 10, 10, 0.98);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--border-color);
+    padding: 0.8rem 1rem;
+}
+
+.navbar-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+}
+
+.navbar-logo a {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: var(--text-light);
+    text-decoration: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.navbar-logo a:hover {
+    color: var(--accent-gold);
+}
+
+.logo-text {
+    font-family: 'Cormorant Garamond', serif;
+    letter-spacing: 1px;
+}
+
+.nav-menu {
+    display: none;
+    position: absolute;
+    top: 60px;
+    left: 0;
+    right: 0;
+    background: rgba(10, 10, 10, 0.99);
+    flex-direction: column;
+    border-top: 1px solid var(--border-color);
+    border-bottom: 1px solid var(--border-color);
+}
+
+.nav-menu.active {
+    display: flex;
+}
+
+.nav-list {
+    display: flex;
+    flex-direction: column;
+    list-style: none;
+    gap: 0;
+}
+
+.nav-link {
+    display: block;
+    padding: 1rem 1.5rem;
+    color: var(--text-light);
+    text-decoration: none;
+    border-bottom: 1px solid var(--border-color);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-weight: 500;
+}
+
+.nav-link:hover,
+.nav-link.active {
+    background: rgba(232, 213, 55, 0.1);
+    color: var(--accent-gold);
+    border-left: 4px solid var(--accent-gold);
+    padding-left: calc(1.5rem - 4px);
+}
+
+.hamburger {
+    display: flex;
+    width: 30px;
+    height: 24px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 0;
+}
+
+.hamburger span {
+    width: 100%;
+    height: 2.5px;
+    background: var(--accent-gold);
+    transition: all 0.3s ease;
+    border-radius: 2px;
+}
+
+.hamburger.active span:nth-child(1) {
+    transform: rotate(45deg) translate(10px, 10px);
+}
+
+.hamburger.active span:nth-child(2) {
+    opacity: 0;
+}
+
+.hamburger.active span:nth-child(3) {
+    transform: rotate(-45deg) translate(7px, -7px);
+}
+
+.contact-btn-wrapper {
+    display: none;
+}
+
+/* ========================================
+   HERO SECTION - MOBILE
+   ========================================= */
+
+.hero {
+    position: relative;
+    height: 60vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 60px;
+    overflow: hidden;
+}
+
+.hero-3d-container {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 50%, #0f0f0f 100%);
+}
+
+.hero-slider {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+}
+
+.slider-wrapper {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+.slider-img {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0;
+    transition: opacity 0.6s ease;
+    filter: brightness(0.6) contrast(1.1);
+}
+
+.slider-img.active {
+    opacity: 0.5;
+    z-index: 1;
+}
+
+.slider-controls {
+    position: absolute;
+    bottom: 1rem;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 0.5rem;
+    z-index: 10;
+}
+
+.slider-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: rgba(232, 213, 55, 0.3);
+    border: 1.5px solid var(--accent-gold);
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.slider-dot.active {
+    background: var(--accent-gold);
+    width: 30px;
+    border-radius: 5px;
+}
+
+.particles {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: 2;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 5;
+    text-align: center;
+    max-width: 90%;
+    padding: 0 1rem;
+    animation: fadeInUp 1s ease-out;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.hero-title {
+    font-size: 2rem;
+    line-height: 1.2;
+    margin-bottom: 0.8rem;
+    font-weight: 700;
+    color: var(--accent-gold);
+    text-shadow: 0 0 20px rgba(232, 213, 55, 0.5);
+}
+
+.gradient-text {
+    background: var(--gradient-gold);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.hero-tagline {
+    font-size: 1rem;
+    color: var(--text-muted);
+    margin-bottom: 1.5rem;
+}
+
+.company-highlight {
+    color: var(--accent-gold);
+    font-weight: 700;
+}
+
+.hero-buttons {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+/* BUTTONS - MOBILE TOUCH FRIENDLY */
+.btn {
+    padding: 0.9rem 1.5rem;
+    border-radius: 30px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    border: none;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    font-size: 0.95rem;
+    min-height: 50px;
+    min-width: 150px;
+}
+
+.btn-primary {
+    background: var(--gradient-gold);
+    color: var(--primary-dark);
+    box-shadow: 0 5px 15px rgba(232, 213, 55, 0.4);
+}
+
+.btn-primary:active {
+    transform: scale(0.98);
+}
+
+.btn-secondary {
+    background: transparent;
+    color: var(--accent-gold);
+    border: 2px solid var(--accent-gold);
+}
+
+/* ========================================
+   SECTIONS - MOBILE
+   ========================================= */
+
+.section-title {
+    font-size: 2rem;
+    text-align: center;
+    margin-bottom: 1.5rem;
+    letter-spacing: 1px;
+}
+
+.section-subtitle {
+    text-align: center;
+    color: var(--text-muted);
+    font-size: 0.95rem;
+    margin-bottom: 2rem;
+}
+
+.accent {
+    color: var(--accent-gold);
+    text-shadow: 0 0 20px rgba(232, 213, 55, 0.8);
+}
+
+.page-header {
+    margin-top: 60px;
+    padding: 2rem 1rem;
+    background: linear-gradient(135deg, rgba(212, 175, 55, 0.1), rgba(232, 213, 208, 0.05));
+    border-bottom: 1px solid var(--border-color);
+    text-align: center;
+}
+
+.page-header h1 {
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+    color: var(--accent-gold);
+}
+
+.page-header p {
+    color: var(--text-muted);
+    font-size: 0.9rem;
+}
+
+/* SERVICES GRID - MOBILE */
+.services-premium {
+    padding: 3rem 0;
+    background: linear-gradient(180deg, var(--secondary-dark), var(--primary-dark));
+    border-top: 1px solid var(--border-color);
+}
+
+.services-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+}
+
+.service-card {
+    text-align: center;
+    padding: 1.5rem;
+    background: rgba(232, 213, 55, 0.05);
+    border: 1px solid var(--border-color);
+    border-radius: 15px;
+    transition: all 0.4s ease;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+}
+
+.service-card:active {
+    background: rgba(232, 213, 55, 0.15);
+    border-color: var(--accent-gold);
+    transform: scale(0.98);
+}
+
+.service-icon {
+    font-size: 2.5rem;
+    color: var(--accent-gold);
+    margin-bottom: 1rem;
+    transition: all 0.3s ease;
+}
+
+.service-card:active .service-icon {
+    transform: scale(1.2);
+}
+
+.service-card h3 {
+    font-size: 1.1rem;
+    color: var(--accent-light-gold);
+    margin-bottom: 0.5rem;
+}
+
+.service-card p {
+    color: var(--text-muted);
+    font-size: 0.9rem;
+    line-height: 1.5;
+}
+
+/* TESTIMONIALS - MOBILE */
+.testimonials {
+    padding: 3rem 0;
+    background: linear-gradient(180deg, var(--secondary-dark), var(--primary-dark));
+    border-top: 1px solid var(--border-color);
+}
+
+.testimonials-carousel {
+    position: relative;
+    max-width: 100%;
+    margin: 2rem 0;
+}
+
+.testimonial-item {
+    display: none;
+}
+
+.testimonial-item.active {
+    display: block;
+}
+
+.testimonial-content {
+    background: rgba(232, 213, 55, 0.08);
+    border: 1px solid var(--border-color);
+    border-radius: 15px;
+    padding: 1.5rem;
+    text-align: center;
+}
+
+.testimonial-text {
+    color: var(--text-light);
+    font-size: 0.95rem;
+    line-height: 1.6;
+    margin-bottom: 1rem;
+    font-style: italic;
+}
+
+.testimonial-author {
+    display: block;
+    color: var(--accent-gold);
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+
+.testimonials-controls {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-top: 1.5rem;
+}
+
+.testimonial-nav {
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    background: var(--accent-gold);
+    color: var(--primary-dark);
+    border: none;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 50px;
+    min-width: 50px;
+}
+
+/* CONTACT FORM - MOBILE */
+.contact {
+    padding: 2rem 0;
+    background: var(--primary-dark);
+}
+
+.contact-info {
+    margin-bottom: 2rem;
+}
+
+.contact-info h3 {
+    color: var(--accent-gold);
+    margin-bottom: 0.8rem;
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    font-size: 1.1rem;
+}
+
+.contact-info p {
+    color: var(--text-muted);
+    font-size: 0.95rem;
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+}
+
+.contact-form {
+    display: grid;
+    gap: 1rem;
+}
+
+.form-group {
+    display: grid;
+    gap: 0.5rem;
+}
+
+.form-group label {
+    color: var(--accent-gold);
+    font-weight: 600;
+    font-size: 0.95rem;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+    width: 100%;
+    padding: 0.9rem;
+    background: rgba(232, 213, 55, 0.1);
+    border: 2px solid #e8d537;
+    border-radius: 10px;
+    color: #ffffff;
+    font-family: inherit;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    -webkit-appearance: none;
+    appearance: none;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: var(--accent-gold);
+    box-shadow: 0 0 15px rgba(232, 213, 55, 0.4);
+    background: rgba(232, 213, 55, 0.2);
+}
+
+.form-group option {
+    background: #1a1a1a;
+    color: #ffffff;
+}
+
+/* FOOTER - MOBILE */
+.footer {
+    background: var(--primary-dark);
+    border-top: 1px solid var(--border-color);
+    padding: 2rem 1rem;
+    text-align: center;
+    color: var(--text-muted);
+}
+
+.footer h3 {
+    color: var(--accent-gold);
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+}
+
+.social-links {
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+    margin: 1rem 0;
+}
+
+.social-links a {
+    color: var(--accent-gold);
+    font-size: 1.5rem;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.social-links a:active {
+    transform: scale(0.9);
+}
+
+/* ========================================
+   TABLET & DESKTOP (768px+)
+   ========================================= */
+
+@media (min-width: 768px) {
+    .container {
+        padding: 0 2rem;
+    }
+    
+    .navbar {
+        padding: 0.8rem 2rem;
+    }
+    
+    .hamburger {
+        display: none;
+    }
+    
+    .nav-menu {
+        display: flex !important;
+        position: static;
+        flex-direction: row;
+        background: none;
+        border: none;
+        gap: 0;
+    }
+    
+    .nav-list {
+        flex-direction: row;
+        gap: 0;
+    }
+    
+    .nav-link {
+        padding: 0.8rem 1.5rem;
+        border-bottom: none;
+        position: relative;
+    }
+    
+    .nav-link::after {
+        content: '';
+        position: absolute;
+        width: 0;
+        height: 2px;
+        bottom: 0;
+        left: 50%;
+        background-color: var(--accent-gold);
+        transition: all 0.3s ease;
+        transform: translateX(-50%);
+    }
+    
+    .nav-link:hover::after,
+    .nav-link.active::after {
+        width: 100%;
+    }
+    
+    .nav-link:hover,
+    .nav-link.active {
+        background: none;
+        border-left: none;
+        padding-left: 1.5rem;
+    }
+    
+    .contact-btn-wrapper {
+        display: flex;
+    }
+    
+    .contact-btn {
+        padding: 0.8rem 1.5rem;
+        background: var(--gradient-gold);
+        color: var(--primary-dark);
+        text-decoration: none;
+        border-radius: 50px;
+        font-weight: 600;
+        transition: all 0.3s ease;
+        border: none;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        box-shadow: 0 5px 15px rgba(212, 175, 55, 0.3);
+    }
+    
+    .contact-btn:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 10px 25px rgba(212, 175, 55, 0.5);
+    }
+    
+    .hero {
+        height: 100vh;
+        margin-top: 60px;
+    }
+    
+    .hero-title {
+        font-size: 4rem;
+    }
+    
+    .section-title {
+        font-size: 3rem;
+    }
+    
+    .services-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 2rem;
+    }
+    
+    .page-header {
+        padding: 4rem 2rem;
+    }
+    
+    .page-header h1 {
+        font-size: 3rem;
+    }
+    
+    .contact {
+        padding: 4rem 0;
+    }
+}
+
+@media (min-width: 1024px) {
+    .services-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+/* ========================================
+   ANIMATIONS
+   ========================================= */
+
+@keyframes glowPulse {
+    0%, 100% { text-shadow: 0 0 20px rgba(232, 213, 55, 0.6); }
+    50% { text-shadow: 0 0 40px rgba(232, 213, 55, 1); }
+}
+
+@keyframes floatParallax {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-20px); }
+}
+
+@keyframes scale-bounce {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+}
+    </style>
+</head>
+<body>
+    <!-- NAVIGATION -->
+    <header class="navbar">
+        <div class="navbar-container">
+            <div class="navbar-logo">
+                <a onclick="showPage('home')" style="cursor: pointer;">
+                    <span style="font-size: 1.5rem;">✨</span>
+                    <span class="logo-text">DRV</span>
+                </a>
+            </div>
+
+            <nav class="nav-menu" id="navMenu">
+                <ul class="nav-list">
+                    <li><a class="nav-link active" onclick="showPage('home'); toggleNav();">Home</a></li>
+                    <li><a class="nav-link" onclick="showPage('about'); toggleNav();">About</a></li>
+                    <li><a class="nav-link" onclick="showPage('services'); toggleNav();">Services</a></li>
+                    <li><a class="nav-link" onclick="showPage('testimonials'); toggleNav();">Testimonials</a></li>
+                    <li><a class="nav-link" onclick="showPage('booking'); toggleNav();">Booking</a></li>
+                    <li><a class="nav-link" onclick="showPage('contact'); toggleNav();">Contact</a></li>
+                </ul>
+            </nav>
+
+            <div class="contact-btn-wrapper">
+                <a href="tel:8319111085" class="contact-btn">
+                    <i class="fas fa-phone"></i> Call
+                </a>
+            </div>
+
+            <button class="hamburger" id="hamburger" onclick="toggleNav()">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </header>
+
+    <!-- HOME PAGE -->
+    <section id="home" class="page-section active">
+        <div class="hero">
+            <div class="hero-3d-container"></div>
+            
+            <div class="hero-content">
+                <h1 class="hero-title">
+                    <span class="gradient-text">Unforgettable</span><br>Events
+                </h1>
+                <p class="hero-tagline"><span class="company-highlight">DRV Events</span></p>
+                <div class="hero-buttons">
+                    <a href="tel:8319111085" class="btn btn-primary">
+                        <i class="fas fa-phone"></i> Call Now
+                    </a>
+                    <a href="https://wa.me/8319111085" class="btn btn-secondary">
+                        <i class="fab fa-whatsapp"></i> WhatsApp
+                    </a>
+                </div>
+            </div>
+
+            <div class="particles" id="particles"></div>
+
+            <div class="hero-slider">
+                <div class="slider-wrapper">
+                    <img src="https://lh3.googleusercontent.com/gps-cs-s/AHVAweqb2Iuk8q9j1_c5hX7xikcAxs_kwKG_n0bRdjDZXX1CbWUIFeRHdudTEBgSWDpyFwlZhPEqn2zSxG8z8sePkF5JUR-uv81R7vJHg5Kq42NCWLXmIxZ_hDg6Sd0hjKp3qnwKcfgS_pdeV_KI=s1360-w1360-h1020-rw" alt="Wedding" class="slider-img active">
+                    <img src="https://lh3.googleusercontent.com/gps-cs-s/AHVAwerXCqxJqHwsaGFbSUz2sNqS9f3-bYBY6ovE0Go8WZNEQ4_o0SXYrqO4tvE6LmU2-tm8AYy4_kgDhyzvivtjxq6L1Ad1rJt0LSEXXcYfHuH_ytOjgPk1WlzdUEj1TfIqBtm1He8p6aovZ6l6=s1360-w1360-h1020-rw" alt="Event" class="slider-img">
+                    <img src="https://lh3.googleusercontent.com/gps-cs-s/AHVAweoyOIE6dQv3PxhaiyOaqnXN1jNygyf5aAeuro8xgvJjYXKPR2ZCZWbKfq3q-OGnE1lWL2MF5zhIYNVmlNNHZAtFqNmBI2rl1R1Audx84ERrsRrdhOlvRhYTh8cnoVhHmzuQsuE=s1360-w1360-h1020-rw" alt="Party" class="slider-img">
+                    <img src="https://i.pinimg.com/564x/42/9b/af/429baf18cbb66c62afa1fcb44918dd6e.jpg" alt="Celebration" class="slider-img">
+                </div>
+                <div class="slider-controls">
+                    <button class="slider-dot active" onclick="goToSlide(0)"></button>
+                    <button class="slider-dot" onclick="goToSlide(1)"></button>
+                    <button class="slider-dot" onclick="goToSlide(2)"></button>
+                    <button class="slider-dot" onclick="goToSlide(3)"></button>
+                </div>
+            </div>
+        </div>
+
+        <!-- SERVICES PREVIEW -->
+        <section class="services-premium">
+            <div class="container">
+                <h2 class="section-title">Our <span class="accent">Services</span></h2>
+                <div class="services-grid">
+                    <div class="service-card">
+                        <div class="service-icon">💍</div>
+                        <h3>Weddings</h3>
+                        <p>Complete wedding planning & execution</p>
+                    </div>
+                    <div class="service-card">
+                        <div class="service-icon">🎉</div>
+                        <h3>Parties</h3>
+                        <p>Birthday, Anniversary & Celebration</p>
+                    </div>
+                    <div class="service-card">
+                        <div class="service-icon">💼</div>
+                        <h3>Corporate</h3>
+                        <p>Professional event coordination</p>
+                    </div>
+                    <div class="service-card">
+                        <div class="service-icon">📸</div>
+                        <h3>Photography</h3>
+                        <p>Professional photo & video coverage</p>
+                    </div>
+                    <div class="service-card">
+                        <div class="service-icon">🎭</div>
+                        <h3>Entertainment</h3>
+                        <p>DJ, Performances & Music Events</p>
+                    </div>
+                    <div class="service-card">
+                        <div class="service-icon">🌺</div>
+                        <h3>Decoration</h3>
+                        <p>Premium decoration & setup services</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </section>
+
+    <!-- ABOUT PAGE -->
+    <section id="about" class="page-section">
+        <div class="page-header">
+            <h1>About <span class="accent">DRV Events</span></h1>
+            <p>Premium Event Management Since 2013</p>
+        </div>
+
+        <div class="services-premium">
+            <div class="container">
+                <h2 class="section-title">Why Choose Us?</h2>
+                <div class="services-grid">
+                    <div class="service-card">
+                        <div class="service-icon">🏆</div>
+                        <h3>13+ Years</h3>
+                        <p>Experience in event management</p>
+                    </div>
+                    <div class="service-card">
+                        <div class="service-icon">👥</div>
+                        <h3>1000+ Families</h3>
+                        <p>Happy customers & clients</p>
+                    </div>
+                    <div class="service-card">
+                        <div class="service-icon">📋</div>
+                        <h3>500+ Events</h3>
+                        <p>Successfully completed events</p>
+                    </div>
+                    <div class="service-card">
+                        <div class="service-icon">⭐</div>
+                        <h3>100% Satisfaction</h3>
+                        <p>Guaranteed customer satisfaction</p>
+                    </div>
+                    <div class="service-card">
+                        <div class="service-icon">👔</div>
+                        <h3>Professional Team</h3>
+                        <p>Expert event coordinators</p>
+                    </div>
+                    <div class="service-card">
+                        <div class="service-icon">🎯</div>
+                        <h3>Customized Solutions</h3>
+                        <p>Tailored to your needs</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SERVICES PAGE -->
+    <section id="services" class="page-section">
+        <div class="page-header">
+            <h1>All <span class="accent">Services</span></h1>
+            <p>Complete event solutions</p>
+        </div>
+
+        <div class="services-premium">
+            <div class="container">
+                <div class="services-grid">
+                    <div class="service-card">
+                        <div class="service-icon">💍</div>
+                        <h3>Wedding Management</h3>
+                        <p>Complete wedding planning from haldi to reception</p>
+                    </div>
+                    <div class="service-card">
+                        <div class="service-icon">🎂</div>
+                        <h3>Birthday Parties</h3>
+                        <p>Memorable birthday celebrations</p>
+                    </div>
+                    <div class="service-card">
+                        <div class="service-icon">💒</div>
+                        <h3>Anniversaries</h3>
+                        <p>Special milestone celebrations</p>
+                    </div>
+                    <div class="service-card">
+                        <div class="service-icon">💼</div>
+                        <h3>Corporate Events</h3>
+                        <p>Professional conferences & functions</p>
+                    </div>
+                    <div class="service-card">
+                        <div class="service-icon">🎭</div>
+                        <h3>Entertainment</h3>
+                        <p>DJ nights, performances & music events</p>
+                    </div>
+                    <div class="service-card">
+                        <div class="service-icon">🌺</div>
+                        <h3>Decoration</h3>
+                        <p>Premium decoration services</p>
+                    </div>
+                    <div class="service-card">
+                        <div class="service-icon">🍽️</div>
+                        <h3>Catering</h3>
+                        <p>Food service coordination</p>
+                    </div>
+                    <div class="service-card">
+                        <div class="service-icon">📸</div>
+                        <h3>Photography</h3>
+                        <p>Professional photos & videos</p>
+                    </div>
+                    <div class="service-card">
+                        <div class="service-icon">🎓</div>
+                        <h3>Educational Events</h3>
+                        <p>School & college functions</p>
+                    </div>
+                    <div class="service-card">
+                        <div class="service-icon">👶</div>
+                        <h3>Baby Shower</h3>
+                        <p>Elegant naming ceremonies</p>
+                    </div>
+                    <div class="service-card">
+                        <div class="service-icon">💐</div>
+                        <h3>Engagement</h3>
+                        <p>Engagement ceremony planning</p>
+                    </div>
+                    <div class="service-card">
+                        <div class="service-icon">✨</div>
+                        <h3>Customized Events</h3>
+                        <p>Any special occasion</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- TESTIMONIALS PAGE -->
+    <section id="testimonials" class="page-section">
+        <div class="page-header">
+            <h1>Testimonials</h1>
+            <p>What clients say about us</p>
+        </div>
+
+        <div class="testimonials">
+            <div class="container">
+                <div class="testimonials-carousel">
+                    <div class="testimonial-item active">
+                        <div class="testimonial-content">
+                            <p class="testimonial-text">"DRV Events made our wedding perfect! Highly recommended."</p>
+                            <span class="testimonial-author">- Priya & Aditya</span>
+                        </div>
+                    </div>
+                    <div class="testimonial-item">
+                        <div class="testimonial-content">
+                            <p class="testimonial-text">"Professional team, excellent coordination, amazing service!"</p>
+                            <span class="testimonial-author">- Rahul & Deepika</span>
+                        </div>
+                    </div>
+                    <div class="testimonial-item">
+                        <div class="testimonial-content">
+                            <p class="testimonial-text">"Corporate event was a huge success. Highly professional!"</p>
+                            <span class="testimonial-author">- Mr. Sharma</span>
+                        </div>
+                    </div>
+                    <div class="testimonial-item">
+                        <div class="testimonial-content">
+                            <p class="testimonial-text">"13+ years experience really shows. Outstanding service!"</p>
+                            <span class="testimonial-author">- Mrs. Gupta</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="testimonials-controls">
+                    <button class="testimonial-nav" onclick="prevTest()"><i class="fas fa-chevron-left"></i></button>
+                    <button class="testimonial-nav" onclick="nextTest()"><i class="fas fa-chevron-right"></i></button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- BOOKING PAGE -->
+    <section id="booking" class="page-section">
+        <div class="page-header">
+            <h1>Ready to Book?</h1>
+            <p>Plan your dream event today</p>
+        </div>
+
+        <div class="services-premium">
+            <div class="container">
+                <p style="text-align: center; color: var(--text-muted); margin-bottom: 2rem;">Contact us to discuss your event requirements!</p>
+
+                <div class="services-grid">
+                    <div class="service-card">
+                        <div class="service-icon">🎯</div>
+                        <h3>100% Customized</h3>
+                        <p>Your event, your way</p>
+                    </div>
+                    <div class="service-card">
+                        <div class="service-icon">👥</div>
+                        <h3>Expert Planning</h3>
+                        <p>13+ years experience</p>
+                    </div>
+                    <div class="service-card">
+                        <div class="service-icon">😌</div>
+                        <h3>Stress-Free</h3>
+                        <p>We handle everything</p>
+                    </div>
+                </div>
+
+                <div style="text-align: center; margin-top: 2rem;">
+                    <a href="tel:8319111085" class="btn btn-primary">
+                        <i class="fas fa-phone"></i> Call Now
+                    </a>
+                    <a href="https://wa.me/8319111085" class="btn btn-secondary" style="margin-top: 1rem;">
+                        <i class="fab fa-whatsapp"></i> Message on WhatsApp
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTACT PAGE -->
+    <section id="contact" class="page-section">
+        <div class="page-header">
+            <h1>Contact <span class="accent">Us</span></h1>
+            <p>Get in touch with DRV Events</p>
+        </div>
+
+        <div class="contact">
+            <div class="container">
+                <!-- CONTACT INFO -->
+                <div class="contact-info">
+                    <h3><i class="fas fa-map-marker-alt"></i> Address</h3>
+                    <p>JAY NAGAR, CIVIL LINES, KOTHI ROAD<br>Dewas, Madhya Pradesh 455001</p>
+
+                    <h3><i class="fas fa-phone"></i> Phone</h3>
+                    <p><a href="tel:8319111085" style="color: var(--accent-gold); text-decoration: none;">📞 Call: 8319111085</a><br>
+                    <a href="tel:08871194663" style="color: var(--accent-gold); text-decoration: none;">📞 Call: 088711 94663</a></p>
+
+                    <h3><i class="fas fa-envelope"></i> Email</h3>
+                    <p><a href="mailto:inbox2drv@gmail.com" style="color: var(--accent-gold); text-decoration: none;">📧 inbox2drv@gmail.com</a></p>
+
+                    <h3><i class="fas fa-clock"></i> Hours</h3>
+                    <p>Monday - Sunday<br>9:00 AM - 10:00 PM</p>
+
+                    <h3><i class="fas fa-share-alt"></i> Follow Us</h3>
+                    <div class="social-links">
+                        <a href="https://wa.me/8319111085"><i class="fab fa-whatsapp"></i></a>
+                        <a href="https://www.instagram.com/drvevents"><i class="fab fa-instagram"></i></a>
+                        <a href="https://www.facebook.com/drvevents.dewas"><i class="fab fa-facebook"></i></a>
+                    </div>
+                </div>
+
+                <!-- CONTACT FORM -->
+                <form id="contactForm" class="contact-form" onsubmit="handleForm(event)">
+                    <h2 style="color: var(--accent-gold); margin-bottom: 1.5rem; text-align: center;">Send Message</h2>
+                    
+                    <div class="form-group">
+                        <label>Your Name</label>
+                        <input type="text" name="name" required />
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Your Email</label>
+                        <input type="email" name="email" required />
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Phone Number</label>
+                        <input type="tel" name="phone" required />
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Event Type</label>
+                        <select name="eventType" required>
+                            <option value="">-- Select Event --</option>
+                            <option value="Wedding">🎊 Complete Wedding</option>
+                            <option value="Haldi">Haldi Ceremony</option>
+                            <option value="Mehendi">Mehendi Event</option>
+                            <option value="Sangeet">Sangeet Night</option>
+                            <option value="Baraat">Baraat Management</option>
+                            <option value="Reception">Wedding Reception</option>
+                            <option value="Birthday">🎂 Birthday Party</option>
+                            <option value="Anniversary">💒 Anniversary</option>
+                            <option value="Baby Shower">👶 Baby Shower</option>
+                            <option value="Engagement">💐 Engagement</option>
+                            <option value="Corporate">💼 Corporate Event</option>
+                            <option value="Product Launch">Product Launch</option>
+                            <option value="Conference">Conference/Seminar</option>
+                            <option value="Team Building">Team Building</option>
+                            <option value="Educational">🎓 School/College Event</option>
+                            <option value="Entertainment">🎭 Entertainment Event</option>
+                            <option value="Photography">📸 Photography Service</option>
+                            <option value="Decoration">🌺 Decoration Only</option>
+                            <option value="Catering">🍽️ Catering</option>
+                            <option value="Other">✨ Other</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Message</label>
+                        <textarea name="message" rows="4" required></textarea>
+                    </div>
+                    
+                    <button type="submit" class="btn btn-primary" style="width: 100%;">
+                        <i class="fas fa-send"></i> Send via WhatsApp
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <h3>DRV Events</h3>
+        <p>Premium Event Management Since 2013</p>
+        <p style="font-size: 0.85rem; margin-top: 0.5rem;">© 2026 DRV Events. All rights reserved.</p>
+    </footer>
+
+    <script>
+// PAGE NAVIGATION
+function showPage(pageId) {
+    document.querySelectorAll('.page-section').forEach(p => p.classList.remove('active'));
+    document.getElementById(pageId).classList.add('active');
+    window.scrollTo(0, 0);
+}
+
+function toggleNav() {
+    document.getElementById('hamburger').classList.toggle('active');
+    document.getElementById('navMenu').classList.toggle('active');
+}
+
+// SLIDER
+let sliderIndex = 0;
+function goToSlide(n) {
+    const slides = document.querySelectorAll('.slider-img');
+    const dots = document.querySelectorAll('.slider-dot');
+    sliderIndex = (n + slides.length) % slides.length;
+    slides.forEach(s => s.classList.remove('active'));
+    dots.forEach(d => d.classList.remove('active'));
+    slides[sliderIndex].classList.add('active');
+    dots[sliderIndex].classList.add('active');
+}
+
+setInterval(() => goToSlide(sliderIndex + 1), 3000);
+
+// TESTIMONIALS
+let testIndex = 0;
+function nextTest() {
+    testIndex++;
+    showTest();
+}
+function prevTest() {
+    testIndex--;
+    showTest();
+}
+function showTest() {
+    const items = document.querySelectorAll('.testimonial-item');
+    testIndex = (testIndex + items.length) % items.length;
+    items.forEach(i => i.classList.remove('active'));
+    items[testIndex].classList.add('active');
+}
+
+// FORM
+function handleForm(e) {
+    e.preventDefault();
+    const form = e.target;
+    const data = new FormData(form);
+    let msg = 'Hello DRV Events,\n\n';
+    for (let [k, v] of data) {
+        msg += `${k}: ${v}\n`;
+    }
+    window.open(`https://wa.me/8319111085?text=${encodeURIComponent(msg)}`, '_blank');
+    form.reset();
+}
+
+// CLOSE MENU ON OUTSIDE CLICK
+document.addEventListener('click', (e) => {
+    if (!e.target.closest('.navbar-container')) {
+        document.getElementById('hamburger').classList.remove('active');
+        document.getElementById('navMenu').classList.remove('active');
+    }
+});
+    </script>
+</body>
+</html>

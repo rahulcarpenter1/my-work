@@ -1,0 +1,533 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Happy Customers - DRV Events | Video Gallery from Instagram & Past Events">
+    <meta name="keywords" content="Happy Customers, Videos, Gallery, Instagram, DRV Events">
+    <title>Happy Customers - DRV Events | Video Gallery & Events</title>
+    <link rel="stylesheet" href="/my-work/css/styles.css">
+    <link rel="stylesheet" href="/my-work/css/responsive.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script async src="//www.instagram.com/embed.js"></script>
+    <style>
+        /* Video Gallery Styles */
+        .video-container {
+            position: relative;
+            width: 100%;
+            overflow: hidden;
+            border-radius: 15px;
+            background: rgba(232, 213, 55, 0.05);
+            border: 2px solid var(--border-color);
+            transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        .video-container:hover {
+            border-color: var(--accent-gold);
+            box-shadow: 0 20px 60px rgba(232, 213, 55, 0.3);
+            transform: translateY(-10px) scale(1.03);
+        }
+
+        .video-wrapper {
+            position: relative;
+            width: 100%;
+            padding-bottom: 56.25%;
+            height: 0;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(232, 213, 55, 0.05);
+        }
+
+        .video-wrapper iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+            border-radius: 13px;
+        }
+
+        .video-wrapper blockquote {
+            position: relative !important;
+            width: 100% !important;
+            max-width: 100% !important;
+            margin: 0 !important;
+            padding: 1rem !important;
+            border-radius: 13px;
+        }
+
+        .video-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(232, 213, 55, 0.1), rgba(240, 168, 200, 0.05));
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            pointer-events: none;
+        }
+
+        .video-container:hover .video-overlay {
+            opacity: 1;
+        }
+
+        .video-info {
+            padding: 1.5rem;
+            background: rgba(232, 213, 55, 0.05);
+            border-top: 1px solid var(--border-color);
+        }
+
+        .video-info h3 {
+            color: var(--accent-gold);
+            margin: 0 0 0.5rem 0;
+            font-size: 1.05rem;
+        }
+
+        .video-info p {
+            color: var(--text-muted);
+            margin: 0;
+            font-size: 0.9rem;
+        }
+
+        /* Gallery Grid */
+        .video-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2.5rem;
+            margin: 3rem 0;
+        }
+
+        /* Size Controls */
+        .size-controls-gallery {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-bottom: 3rem;
+            flex-wrap: wrap;
+        }
+
+        .size-btn-gallery {
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            border: 2px solid var(--border-color);
+            background: transparent;
+            color: var(--text-light);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 1rem;
+        }
+
+        .size-btn-gallery.active {
+            border-color: var(--accent-gold);
+            background: var(--accent-gold);
+            color: var(--primary-dark);
+            transform: scale(1.1);
+        }
+
+        .size-btn-gallery:hover {
+            border-color: var(--accent-gold);
+            color: var(--accent-gold);
+        }
+
+        /* Size Variants */
+        .video-gallery.size-small .video-container {
+            max-width: 250px;
+            margin: 0 auto;
+        }
+
+        .video-gallery.size-large .video-container {
+            grid-column: span 2;
+        }
+
+        @media (max-width: 768px) {
+            .video-gallery.size-large .video-container {
+                grid-column: span 1;
+            }
+        }
+
+        /* Video Counter */
+        .video-counter {
+            text-align: center;
+            color: var(--text-muted);
+            margin-bottom: 2rem;
+            font-size: 1rem;
+        }
+
+        .video-counter strong {
+            color: var(--accent-gold);
+        }
+
+        /* Lightbox Styles */
+        .lightbox {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.95);
+            z-index: 1000;
+            backdrop-filter: blur(5px);
+        }
+
+        .lightbox.active {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .lightbox-content {
+            position: relative;
+            width: 90%;
+            max-width: 900px;
+            aspect-ratio: 16 / 9;
+            animation: slideInUp 0.4s ease;
+        }
+
+        .lightbox-content iframe {
+            width: 100%;
+            height: 100%;
+            border-radius: 15px;
+        }
+
+        .lightbox-close {
+            position: absolute;
+            top: -50px;
+            right: 0;
+            background: var(--accent-gold);
+            color: var(--primary-dark);
+            border: none;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            font-size: 1.5rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .lightbox-close:hover {
+            transform: scale(1.1);
+            box-shadow: 0 0 30px rgba(232, 213, 55, 0.5);
+        }
+
+        @keyframes slideInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Instagram Section */
+        .instagram-section {
+            background: linear-gradient(135deg, rgba(232, 213, 55, 0.1), rgba(240, 168, 200, 0.05));
+            border: 2px solid var(--border-color);
+            border-radius: 15px;
+            padding: 3rem;
+            text-align: center;
+            margin: 4rem 0;
+            transition: all 0.3s ease;
+        }
+
+        .instagram-section:hover {
+            border-color: var(--accent-gold);
+            box-shadow: 0 15px 40px rgba(232, 213, 55, 0.2);
+        }
+
+        .instagram-section h2 {
+            color: var(--accent-gold);
+            margin-bottom: 1rem;
+        }
+
+        .instagram-section p {
+            color: var(--text-muted);
+            margin-bottom: 2rem;
+            font-size: 1.05rem;
+        }
+
+        .instagram-link-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1rem 2.5rem;
+            background: linear-gradient(135deg, var(--accent-gold), #f0a8c8);
+            color: var(--primary-dark);
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 1.05rem;
+            transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+            border: 2px solid transparent;
+        }
+
+        .instagram-link-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(232, 213, 55, 0.3);
+            border-color: var(--secondary-dark);
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation Header -->
+    <header class="navbar">
+        <div class="navbar-container">
+            <div class="navbar-logo">
+                <a href="/my-work/index.html">
+                    <span class="logo-icon">✨</span>
+                    <span class="logo-text">DRV Events</span>
+                </a>
+            </div>
+
+            <nav class="nav-menu">
+                <ul class="nav-list">
+                    <li><a href="/my-work/index.html" class="nav-link">Home</a></li>
+                    <li><a href="/my-work/pages/about.html" class="nav-link">About Us</a></li>
+                    <li><a href="/my-work/pages/services.html" class="nav-link">Services</a></li>
+                    <li><a href="/my-work/pages/testimonials.html" class="nav-link">Testimonials</a></li>
+                    <li><a href="/my-work/pages/booking.html" class="nav-link">Booking</a></li>
+                    <li><a href="/my-work/pages/contact.html" class="nav-link">Contact</a></li>
+                </ul>
+            </nav>
+
+            <div class="contact-btn-wrapper">
+                <a href="tel:8319111085" class="contact-btn">
+                    <i class="fas fa-phone"></i> Call Now
+                </a>
+                <button class="hamburger" id="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Page Header -->
+    <section class="page-header" style="margin-top: 60px; padding: 4rem 0; background: linear-gradient(135deg, rgba(232, 213, 55, 0.1), rgba(240, 168, 200, 0.05)); border-bottom: 1px solid rgba(232, 213, 55, 0.2);">
+        <div class="container" style="text-align: center;">
+            <h1 style="font-size: 3.5rem; margin-bottom: 1rem; color: var(--accent-gold); animation: textGlow 2s ease-in-out infinite;">Our Happy <span style="color: #f0a8c8;">Customers</span></h1>
+            <p style="color: var(--text-muted); font-size: 1.1rem;">Watch Real Events & Beautiful Moments from @drvevents Instagram</p>
+        </div>
+    </section>
+
+    <!-- Video Gallery Section -->
+    <section style="padding: 6rem 0; background: var(--primary-dark);">
+        <div class="container">
+            <!-- Size Controls -->
+            <div class="size-controls-gallery">
+                <span style="color: var(--text-muted); font-size: 0.95rem;">Video Size:</span>
+                <button class="size-btn-gallery" onclick="changeGallerySize('small')" title="Small">S</button>
+                <button class="size-btn-gallery active" onclick="changeGallerySize('medium')" title="Medium">M</button>
+                <button class="size-btn-gallery" onclick="changeGallerySize('large')" title="Large">L</button>
+            </div>
+
+            <!-- Video Counter -->
+            <div class="video-counter">
+                Showcasing <strong>6+</strong> Beautiful Moments from <strong>@drvevents</strong> Instagram
+            </div>
+
+            <!-- Video Gallery Grid -->
+            <div class="video-gallery size-medium" id="videoGallery">
+                <!-- Instagram Post 1 - Wedding Highlights -->
+                <div class="video-container">
+                    <div class="video-wrapper">
+                        <div class="video-overlay"></div>
+                        <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/drvevents/" data-instgrm-version="14" style="background:white;border:0;border-radius:3px;box-shadow:0 0 1px 0 rgba(0,0,0,0.5),0 1px 10px 0 rgba(0,0,0,0.15);margin: 1px;max-width:540px;min-width:326px;padding:0;width:99.375%;width:-webkit-calc(100% - 2px);width:calc(100% - 2px);"></blockquote>
+                    </div>
+                    <div class="video-info">
+                        <h3><i class="fas fa-ring"></i> Wedding Event</h3>
+                        <p>Beautiful moments from our premium wedding events</p>
+                    </div>
+                </div>
+
+                <!-- Instagram Post 2 - Event Decoration -->
+                <div class="video-container">
+                    <div class="video-wrapper">
+                        <div class="video-overlay"></div>
+                        <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/drvevents/" data-instgrm-version="14" style="background:white;border:0;border-radius:3px;box-shadow:0 0 1px 0 rgba(0,0,0,0.5),0 1px 10px 0 rgba(0,0,0,0.15);margin: 1px;max-width:540px;min-width:326px;padding:0;width:99.375%;width:-webkit-calc(100% - 2px);width:calc(100% - 2px);"></blockquote>
+                    </div>
+                    <div class="video-info">
+                        <h3><i class="fas fa-palette"></i> Decoration & Setup</h3>
+                        <p>Premium decoration and venue transformation</p>
+                    </div>
+                </div>
+
+                <!-- Instagram Post 3 - Birthday Celebration -->
+                <div class="video-container">
+                    <div class="video-wrapper">
+                        <div class="video-overlay"></div>
+                        <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/drvevents/" data-instgrm-version="14" style="background:white;border:0;border-radius:3px;box-shadow:0 0 1px 0 rgba(0,0,0,0.5),0 1px 10px 0 rgba(0,0,0,0.15);margin: 1px;max-width:540px;min-width:326px;padding:0;width:99.375%;width:-webkit-calc(100% - 2px);width:calc(100% - 2px);"></blockquote>
+                    </div>
+                    <div class="video-info">
+                        <h3><i class="fas fa-birthday-cake"></i> Birthday Parties</h3>
+                        <p>Memorable birthday celebrations & entertainment</p>
+                    </div>
+                </div>
+
+                <!-- Instagram Post 4 - Entertainment -->
+                <div class="video-container">
+                    <div class="video-wrapper">
+                        <div class="video-overlay"></div>
+                        <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/drvevents/" data-instgrm-version="14" style="background:white;border:0;border-radius:3px;box-shadow:0 0 1px 0 rgba(0,0,0,0.5),0 1px 10px 0 rgba(0,0,0,0.15);margin: 1px;max-width:540px;min-width:326px;padding:0;width:99.375%;width:-webkit-calc(100% - 2px);width:calc(100% - 2px);"></blockquote>
+                    </div>
+                    <div class="video-info">
+                        <h3><i class="fas fa-music"></i> Live Entertainment</h3>
+                        <p>Music, dance, and live performances at events</p>
+                    </div>
+                </div>
+
+                <!-- Instagram Post 5 - Corporate Events -->
+                <div class="video-container">
+                    <div class="video-wrapper">
+                        <div class="video-overlay"></div>
+                        <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/drvevents/" data-instgrm-version="14" style="background:white;border:0;border-radius:3px;box-shadow:0 0 1px 0 rgba(0,0,0,0.5),0 1px 10px 0 rgba(0,0,0,0.15);margin: 1px;max-width:540px;min-width:326px;padding:0;width:99.375%;width:-webkit-calc(100% - 2px);width:calc(100% - 2px);"></blockquote>
+                    </div>
+                    <div class="video-info">
+                        <h3><i class="fas fa-briefcase"></i> Corporate Events</h3>
+                        <p>Professional events and product launches</p>
+                    </div>
+                </div>
+
+                <!-- Instagram Post 6 - Full Event Coverage -->
+                <div class="video-container">
+                    <div class="video-wrapper">
+                        <div class="video-overlay"></div>
+                        <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/drvevents/" data-instgrm-version="14" style="background:white;border:0;border-radius:3px;box-shadow:0 0 1px 0 rgba(0,0,0,0.5),0 1px 10px 0 rgba(0,0,0,0.15);margin: 1px;max-width:540px;min-width:326px;padding:0;width:99.375%;width:-webkit-calc(100% - 2px);width:calc(100% - 2px);"></blockquote>
+                    </div>
+                    <div class="video-info">
+                        <h3><i class="fas fa-video"></i> Complete Coverage</h3>
+                        <p>Full event documentation and videography</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Instagram Section -->
+    <section style="padding: 6rem 0; background: linear-gradient(135deg, rgba(232, 213, 55, 0.1), rgba(240, 168, 200, 0.05));">
+        <div class="container">
+            <div class="instagram-section">
+                <h2 style="font-size: 2.5rem;">Follow Us on Instagram</h2>
+                <p><i class="fab fa-instagram" style="color: #e8d537; margin-right: 0.5rem;"></i> @drvevents</p>
+                <p style="color: var(--text-muted); margin-bottom: 2rem;">Join our community and see daily updates of beautiful events, behind-the-scenes moments, and customer testimonials</p>
+                
+                <a href="https://www.instagram.com/drvevents" target="_blank" class="instagram-link-btn">
+                    <i class="fab fa-instagram"></i> Follow @drvevents
+                </a>
+
+                <!-- Installation Instructions -->
+                <div style="margin-top: 3rem; padding: 2rem; background: rgba(0, 0, 0, 0.2); border-radius: 10px; border-left: 4px solid var(--accent-gold); text-align: left;">
+                    <h3 style="color: var(--accent-gold); margin-bottom: 1rem;">📝 How to Add Your Instagram Posts</h3>
+                    <p style="color: var(--text-muted); margin-bottom: 1rem;">To display your latest Instagram posts from @drvevents on this gallery:</p>
+                    <ol style="color: var(--text-muted); line-height: 1.8;">
+                        <li>Go to <strong>https://www.instagram.com/drvevents</strong></li>
+                        <li>Find the post/video you want to embed</li>
+                        <li>Click on the post and copy the URL (e.g., https://www.instagram.com/p/ABC123DEF/)</li>
+                        <li>In the <strong>happy-customers.html</strong> file, replace the <code>data-instgrm-permalink</code> values with your post URLs</li>
+                        <li>Save and refresh the page - Instagram embeds will automatically load!</li>
+                    </ol>
+                    <p style="color: var(--text-muted); margin-top: 1rem; font-size: 0.9rem;">
+                        <i class="fas fa-lightbulb"></i> <strong>Tip:</strong> Mix videos and photos from @drvevents for a dynamic gallery. The Instagram embed script automatically detects and displays the content type.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section style="padding: 5rem 0; background: linear-gradient(135deg, rgba(240, 168, 200, 0.1), rgba(232, 213, 55, 0.08)); border-top: 1px solid var(--border-color); border-bottom: 1px solid var(--border-color); text-align: center;">
+        <div class="container">
+            <h2 style="font-size: 2.5rem; margin-bottom: 1rem;">Inspired by Our Work?</h2>
+            <p style="color: var(--text-muted); margin-bottom: 2rem; font-size: 1.1rem;">Let us create your perfect event today</p>
+            <div style="display: flex; gap: 1.5rem; justify-content: center; flex-wrap: wrap;">
+                <a href="pages/booking.html" class="btn btn-primary btn-large">
+                    <i class="fas fa-calendar"></i> Book Your Event
+                </a>
+                <a href="contact.html" class="btn btn-secondary btn-large">
+                    <i class="fas fa-envelope"></i> Get in Touch
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer" style="margin-top: 0;">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>DRV Events</h3>
+                    <p>Premium Event Management & Wedding Planning</p>
+                    <div class="social-links">
+                        <a href="https://wa.me/8319111085" title="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+                        <a href="https://www.instagram.com/drvevents" title="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="https://www.facebook.com/drvevents.dewas" title="Facebook"><i class="fab fa-facebook"></i></a>
+                        <a href="mailto:inbox2drv@gmail.com" title="Email"><i class="fab fa-envelope"></i></a>
+                    </div>
+                </div>
+
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="../index.html">Home</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="services.html">Services</a></li>
+                        <li><a href="testimonials.html">Testimonials</a></li>
+                        <li><a href="happy-customers.html">Videos</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-section">
+                    <h3>Contact Info</h3>
+                    <p><i class="fas fa-map-marker-alt"></i> JAY NAGAR, 8, MIG, CIVIL LINES, KOTHI ROAD, Dewas, Madhya Pradesh</p>
+                    <p><i class="fas fa-phone"></i> <a href="tel:08871194663">088711 94663</a> | <a href="tel:8319111085">8319111085</a></p>
+                    <p><i class="fas fa-envelope"></i> <a href="mailto:inbox2drv@gmail.com">inbox2drv@gmail.com</a></p>
+                </div>
+
+                <div class="footer-section">
+                    <h3>Get in Touch</h3>
+                    <a href="contact.html" class="btn btn-secondary">Contact Form</a>
+                    <a href="careers.html" class="btn btn-secondary">Join Our Team</a>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2013-2026 DRV Events. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- WhatsApp Button -->
+    <a href="https://wa.me/8319111085?text=Hello%20DRV%20Events!" class="whatsapp-btn" title="Chat with us on WhatsApp">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <script>
+        function changeGallerySize(size) {
+            const gallery = document.getElementById('videoGallery');
+            gallery.classList.remove('size-small', 'size-medium', 'size-large');
+            gallery.classList.add('size-' + size);
+
+            document.querySelectorAll('.size-btn-gallery').forEach(btn => btn.classList.remove('active'));
+            event.target.classList.add('active');
+        }
+    </script>
+
+    <script src="/my-work/js/3d-elements.js"></script>
+    <script src="/my-work/js/main.js"></script>
+</body>
+</html>

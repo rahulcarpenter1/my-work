@@ -1,0 +1,812 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Testimonials - DRV Events | Premium Wedding Planning & Event Management">
+    <meta name="keywords" content="Testimonials, Reviews, DRV Events, Wedding Planner, Event Manager">
+    <title>Testimonials - DRV Events | Client Reviews & Success Stories</title>
+    <link rel="stylesheet" href="/my-work/css/styles.css">
+    <link rel="stylesheet" href="/my-work/css/responsive.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Testimonials Specific Styles */
+        .testimonials-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .testimonial-card {
+            background: linear-gradient(135deg, rgba(232, 213, 55, 0.08), rgba(240, 168, 200, 0.05));
+            border: 2px solid var(--border-color);
+            border-radius: 15px;
+            padding: 2rem;
+            transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            min-height: 380px;
+        }
+
+        .testimonial-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(232, 213, 55, 0.15), transparent);
+            transition: left 0.8s ease;
+        }
+
+        .testimonial-card:hover::before {
+            left: 100%;
+        }
+
+        .testimonial-card:hover {
+            border-color: var(--accent-gold);
+            transform: translateY(-12px) scale(1.02);
+            box-shadow: 0 20px 60px rgba(232, 213, 55, 0.3), 0 0 40px rgba(232, 213, 55, 0.15);
+        }
+
+        .testimonial-stars {
+            color: var(--accent-gold);
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+            letter-spacing: 2px;
+        }
+
+        .testimonial-text {
+            color: var(--text-light);
+            font-size: 0.95rem;
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+            flex-grow: 1;
+            animation: fadeInUp 0.8s ease-out;
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            border-top: 1px solid rgba(232, 213, 55, 0.2);
+            padding-top: 1rem;
+        }
+
+        .author-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--accent-gold), var(--accent-light-gold));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            flex-shrink: 0;
+        }
+
+        .author-info h4 {
+            color: var(--accent-gold);
+            margin: 0 0 0.2rem 0;
+            font-size: 0.95rem;
+        }
+
+        .author-info p {
+            color: var(--text-muted);
+            margin: 0;
+            font-size: 0.8rem;
+        }
+
+        /* Carousel Controls */
+        .carousel-controls {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-top: 3rem;
+        }
+
+        .carousel-nav-btn {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            border: 2px solid var(--accent-gold);
+            background: transparent;
+            color: var(--accent-gold);
+            cursor: pointer;
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .carousel-nav-btn:hover {
+            background: var(--accent-gold);
+            color: var(--primary-dark);
+            transform: scale(1.1);
+        }
+
+        .carousel-counter {
+            color: var(--accent-gold);
+            font-size: 1rem;
+            font-weight: 600;
+            min-width: 80px;
+            text-align: center;
+        }
+
+        /* View Toggle */
+        .view-toggle {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .toggle-btn {
+            padding: 0.8rem 1.5rem;
+            border: 2px solid var(--border-color);
+            background: transparent;
+            color: var(--text-light);
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 600;
+        }
+
+        .toggle-btn.active {
+            border-color: var(--accent-gold);
+            background: linear-gradient(135deg, var(--accent-gold), var(--accent-light-gold));
+            color: var(--primary-dark);
+        }
+
+        .toggle-btn:hover {
+            border-color: var(--accent-gold);
+            color: var(--accent-gold);
+        }
+
+        /* Grid View */
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+        }
+
+        /* Carousel View */
+        .testimonials-carousel {
+            display: none;
+            position: relative;
+        }
+
+        .testimonials-carousel.active {
+            display: block;
+        }
+
+        .carousel-slide {
+            display: none;
+            opacity: 0;
+            transition: all 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
+            transform: translateX(50px);
+        }
+
+        .carousel-slide.active {
+            display: block;
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        /* Size Toggle */
+        .size-controls {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            justify-content: center;
+            margin-bottom: 2rem;
+        }
+
+        .size-btn {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            border: 2px solid var(--border-color);
+            background: transparent;
+            color: var(--text-light);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+        }
+
+        .size-btn.active {
+            border-color: var(--accent-gold);
+            background: var(--accent-gold);
+            color: var(--primary-dark);
+        }
+
+        .size-btn:hover {
+            border-color: var(--accent-gold);
+            color: var(--accent-gold);
+        }
+
+        /* Size Variants */
+        .testimonial-card.size-small {
+            min-height: 300px;
+            padding: 1.5rem;
+        }
+
+        .testimonial-card.size-small .testimonial-text {
+            font-size: 0.85rem;
+        }
+
+        .testimonial-card.size-large {
+            min-height: 450px;
+        }
+
+        .testimonial-card.size-large .testimonial-text {
+            font-size: 1rem;
+        }
+
+        /* Stats Section */
+        .testimonials-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 2rem;
+            margin-bottom: 4rem;
+            text-align: center;
+        }
+
+        .stat-item {
+            background: rgba(232, 213, 55, 0.1);
+            border: 2px solid var(--border-color);
+            border-radius: 12px;
+            padding: 2rem 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .stat-item:hover {
+            border-color: var(--accent-gold);
+            box-shadow: 0 10px 30px rgba(232, 213, 55, 0.2);
+        }
+
+        .stat-number {
+            font-size: 3rem;
+            font-weight: 700;
+            color: var(--accent-gold);
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation Header -->
+    <header class="navbar">
+        <div class="navbar-container">
+            <div class="navbar-logo">
+                <a href="/my-work/index.html">
+                    <span class="logo-icon">✨</span>
+                    <span class="logo-text">DRV Events</span>
+                </a>
+            </div>
+
+            <nav class="nav-menu">
+                <ul class="nav-list">
+                    <li><a href="/my-work/index.html" class="nav-link">Home</a></li>
+                    <li><a href="/my-work/pages/about.html" class="nav-link">About Us</a></li>
+                    <li><a href="/my-work/pages/services.html" class="nav-link">Services</a></li>
+                    <li><a href="/my-work/pages/testimonials.html" class="nav-link active">Testimonials</a></li>
+                    <li><a href="/my-work/pages/booking.html" class="nav-link">Booking</a></li>
+                    <li><a href="/my-work/pages/contact.html" class="nav-link">Contact</a></li>
+                </ul>
+            </nav>
+
+            <div class="contact-btn-wrapper">
+                <a href="tel:8319111085" class="contact-btn">
+                    <i class="fas fa-phone"></i> Call Now
+                </a>
+                <button class="hamburger" id="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Page Header -->
+    <section class="page-header" style="margin-top: 60px; padding: 4rem 0; background: linear-gradient(135deg, rgba(232, 213, 55, 0.1), rgba(240, 168, 200, 0.05)); border-bottom: 1px solid rgba(232, 213, 55, 0.2);">
+        <div class="container" style="text-align: center;">
+            <h1 style="font-size: 3.5rem; margin-bottom: 1rem; color: var(--accent-gold); animation: textGlow 2s ease-in-out infinite;">Client Testimonials</h1>
+            <p style="color: var(--text-muted); font-size: 1.1rem;">Stories from our Happy Families & Clients</p>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section style="padding: 6rem 0; background: var(--primary-dark);">
+        <div class="container">
+            <!-- Stats Section -->
+            <div class="testimonials-stats">
+                <div class="stat-item">
+                    <div class="stat-number">1000+</div>
+                    <div class="stat-label">Happy Families</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">500+</div>
+                    <div class="stat-label">Events Planned</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">13+</div>
+                    <div class="stat-label">Years Experience</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">100%</div>
+                    <div class="stat-label">Satisfaction Rate</div>
+                </div>
+            </div>
+
+            <h2 class="section-title">What Our Clients <span class="accent">Say</span></h2>
+
+            <!-- View & Size Controls -->
+            <div style="display: flex; flex-direction: column; gap: 2rem; align-items: center; margin: 2rem 0;">
+                <!-- View Toggle -->
+                <div class="view-toggle">
+                    <button class="toggle-btn active" onclick="switchView('grid')">
+                        <i class="fas fa-th"></i> Grid View
+                    </button>
+                    <button class="toggle-btn" onclick="switchView('carousel')">
+                        <i class="fas fa-images"></i> Carousel View
+                    </button>
+                </div>
+
+                <!-- Size Controls -->
+                <div class="size-controls">
+                    <span style="color: var(--text-muted); font-size: 0.9rem;">Card Size:</span>
+                    <button class="size-btn" onclick="changeSize('small')" title="Small">S</button>
+                    <button class="size-btn active" onclick="changeSize('medium')" title="Medium">M</button>
+                    <button class="size-btn" onclick="changeSize('large')" title="Large">L</button>
+                </div>
+            </div>
+
+            <!-- Grid View -->
+            <div id="gridView" class="testimonials-grid active">
+                <!-- Review 1 -->
+                <div class="testimonial-card size-medium">
+                    <div class="testimonial-stars">★★★★★</div>
+                    <p class="testimonial-text">"We had an amazing experience with DRV Events for our wedding. From planning to execution, everything was handled so smoothly and professionally. A big thanks to Dhruv bhaiya and his hardworking team for making our special day truly memorable. The entire wedding setup was beautiful, and the attention to detail was impressive. Haldi and Musical Phere were the real highlights — full of colors, emotions, and perfect arrangements. Everything felt magical!"</p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">👰</div>
+                        <div class="author-info">
+                            <h4>Vipin Solanki</h4>
+                            <p>Wedding Ceremony</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Review 2 -->
+                <div class="testimonial-card size-medium">
+                    <div class="testimonial-stars">★★★★★</div>
+                    <p class="testimonial-text">"Thank you so much to the DRV Events team for making birthday celebration truly special and memorable! Everything was beautifully planned and managed, and the team was very supportive and professional throughout. We absolutely loved the decoration and overall experience. Highly recommend DRV Events to anyone looking to create beautiful and stress-free celebrations."</p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">🎉</div>
+                        <div class="author-info">
+                            <h4>Goutam Pawar</h4>
+                            <p>Birthday Celebration</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Review 3 -->
+                <div class="testimonial-card size-medium">
+                    <div class="testimonial-stars">★★★★★</div>
+                    <p class="testimonial-text">"We had DRV Events handle my grandmother's 75th birthday, and genuinely, they made it feel special. Everything ran smoothly without us having to worry. The documentary-style video they put together was beautiful. The songs and activities they chose fit her personality perfectly. It felt thoughtful, not generic. We really appreciated the care and effort they put in."</p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">👵</div>
+                        <div class="author-info">
+                            <h4>Nainish</h4>
+                            <p>75th Birthday Event</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Review 4 -->
+                <div class="testimonial-card size-medium">
+                    <div class="testimonial-stars">★★★★★</div>
+                    <p class="testimonial-text">"Dhruv bhaiya did an excellent job at our event management for our wedding at a very cost effective price. He also customized E-patrika based on our choice, that shows he is very considerate and welcoming. You can always go ahead with DRV events and enjoy your wedding peacefully."</p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">💍</div>
+                        <div class="author-info">
+                            <h4>Vaibhav Joshi</h4>
+                            <p>Wedding Management</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Review 5 -->
+                <div class="testimonial-card size-medium">
+                    <div class="testimonial-stars">★★★★★</div>
+                    <p class="testimonial-text">"DRV Events gave me 'The Dreamy Wedding.' Their suggestions truly shaped the entire wedding. It's not the big things that make your wedding successful but the small details you pay attention to. Pre planning reduces a lot of wedding stress, and I would highly recommend DRV Events for any big/small functions. YOU DREAM, THEY EXECUTE!"</p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">✨</div>
+                        <div class="author-info">
+                            <h4>Shreya Solanki</h4>
+                            <p>Wedding Planning</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Review 6 -->
+                <div class="testimonial-card size-medium">
+                    <div class="testimonial-stars">★★★★★</div>
+                    <p class="testimonial-text">"The event organized by you dhruv bhaiya was extremely amazing. All the arrangements were comfortable and satisfying. My family enjoyed every moment of the event organized by your team. Thank you for the wonderful experience!"</p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">🎊</div>
+                        <div class="author-info">
+                            <h4>Chirag Gupta</h4>
+                            <p>Event Management</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Review 7 -->
+                <div class="testimonial-card size-medium">
+                    <div class="testimonial-stars">★★★★★</div>
+                    <p class="testimonial-text">"Thank you very much for making Manya's birthday special and so beautifully organized. It meant a lot to us. The entire team worked tirelessly to ensure everything was perfect and memorable for our family."</p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">🎈</div>
+                        <div class="author-info">
+                            <h4>Diksha Jadhav</h4>
+                            <p>Birthday Party</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Review 8 -->
+                <div class="testimonial-card size-medium">
+                    <div class="testimonial-stars">★★★★★</div>
+                    <p class="testimonial-text">"Dhruv bhaiya was amazing, everything he handled perfectly from entry to the last of the function, doesn't let anyone bored till the end of the party. Thanks bhaiya for making our event so lively and entertaining!"</p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">🎭</div>
+                        <div class="author-info">
+                            <h4>Chandni Manwani</h4>
+                            <p>Party Organization</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Review 9 -->
+                <div class="testimonial-card size-medium">
+                    <div class="testimonial-stars">★★★★★</div>
+                    <p class="testimonial-text">"I am happy that my wife's 75th Birthday Celebration was managed by DRV Events. They made it memorable for our family and friends. The Script of her life story was very nice and narration was impressive. The coordination, decoration, and anchoring were all done beautifully. Mr. Dhruv is a good singer himself. The programme was well-managed and kept the audience enchanted."</p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">🎂</div>
+                        <div class="author-info">
+                            <h4>Dr. Gopal Binnani</h4>
+                            <p>75th Birthday Celebration</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Review 10 -->
+                <div class="testimonial-card size-medium">
+                    <div class="testimonial-stars">★★★★★</div>
+                    <p class="testimonial-text">"DRV Event is a perfect event company and it's my personal experience that Dhruv bhaiya is the best person to celebrate your happy moments. He has done a great job and provided 100% successful results. I am completely satisfied!"</p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">👍</div>
+                        <div class="author-info">
+                            <h4>Gourav Chawda</h4>
+                            <p>Event Management</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Review 11 -->
+                <div class="testimonial-card size-medium">
+                    <div class="testimonial-stars">★★★★★</div>
+                    <p class="testimonial-text">"I am completely satisfied with the two events I got planned by DRV Events. Highly recommended to everyone for all their small and big event needs. Customized needs for your customized events is what they give! Cheers to DRV!"</p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">🌟</div>
+                        <div class="author-info">
+                            <h4>Apoorva Bhatnagar</h4>
+                            <p>Multiple Events</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Review 12 -->
+                <div class="testimonial-card size-medium">
+                    <div class="testimonial-stars">★★★★★</div>
+                    <p class="testimonial-text">"One of the best event management companies in central India which has expertise in managing hundreds of events successfully. You will get great services by TEAM DRV within your specified budget. Highly professional and dedicated!"</p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">🏆</div>
+                        <div class="author-info">
+                            <h4>Sarvesh Parmar</h4>
+                            <p>Event Management</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Review 13 -->
+                <div class="testimonial-card size-medium">
+                    <div class="testimonial-stars">★★★★★</div>
+                    <p class="testimonial-text">"Thank you for making our family's big day so memorable. You and your team managed everything so beautifully. Haldi event was a big hit. You nailed it dhruv bhaiya! Thank you once again for making our celebration special and stress-free!"</p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">💛</div>
+                        <div class="author-info">
+                            <h4>Akanksha Bhatt</h4>
+                            <p>Haldi Ceremony</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Carousel View -->
+            <div id="carouselView" class="testimonials-carousel">
+                <!-- Carousel Slides will be populated by JavaScript -->
+                <div id="carouselContainer"></div>
+
+                <!-- Carousel Controls -->
+                <div class="carousel-controls">
+                    <button class="carousel-nav-btn" onclick="prevSlide()">
+                        <i class="fas fa-chevron-left"></i>
+                    </button>
+                    <div class="carousel-counter">
+                        <span id="currentSlide">1</span> / <span id="totalSlides">13</span>
+                    </div>
+                    <button class="carousel-nav-btn" onclick="nextSlide()">
+                        <i class="fas fa-chevron-right"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section style="padding: 5rem 0; background: linear-gradient(135deg, rgba(232, 213, 55, 0.1), rgba(240, 168, 200, 0.05)); border-top: 1px solid var(--border-color); text-align: center;">
+        <div class="container">
+            <h2 style="font-size: 2.5rem; margin-bottom: 1rem;">Ready to Create Your Perfect <span style="color: var(--accent-gold);">Event</span>?</h2>
+            <p style="color: var(--text-muted); margin-bottom: 2rem; font-size: 1.1rem;">Join over 1000 happy families who trusted DRV Events</p>
+            <div style="display: flex; gap: 1.5rem; justify-content: center; flex-wrap: wrap;">
+                <a href="tel:8319111085" class="btn btn-primary btn-large">
+                    <i class="fas fa-phone"></i> Call Us Now
+                </a>
+                <a href="contact.html" class="btn btn-secondary btn-large">
+                    <i class="fas fa-envelope"></i> Get in Touch
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer" style="margin-top: 0;">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>DRV Events</h3>
+                    <p>Premium Event Management & Wedding Planning</p>
+                    <div class="social-links">
+                        <a href="https://wa.me/8319111085" title="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+                        <a href="https://www.instagram.com/drvevents" title="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="https://www.facebook.com/drvevents.dewas" title="Facebook"><i class="fab fa-facebook"></i></a>
+                        <a href="mailto:inbox2drv@gmail.com" title="Email"><i class="fab fa-envelope"></i></a>
+                    </div>
+                </div>
+
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="../index.html">Home</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="services.html">Services</a></li>
+                        <li><a href="blog.html">Blog</a></li>
+                        <li><a href="testimonials.html">Testimonials</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-section">
+                    <h3>Contact Info</h3>
+                    <p><i class="fas fa-map-marker-alt"></i> JAY NAGAR, 8, MIG, CIVIL LINES, KOTHI ROAD, Dewas, Madhya Pradesh 455001</p>
+                    <p><i class="fas fa-phone"></i> <a href="tel:08871194663">088711 94663</a> | <a href="tel:8319111085">8319111085</a></p>
+                    <p><i class="fas fa-envelope"></i> <a href="mailto:inbox2drv@gmail.com">inbox2drv@gmail.com</a></p>
+                </div>
+
+                <div class="footer-section">
+                    <h3>Get in Touch</h3>
+                    <a href="contact.html" class="btn btn-secondary">Contact Form</a>
+                    <a href="careers.html" class="btn btn-secondary">Join Our Team</a>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2013-2026 DRV Events. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- WhatsApp Button -->
+    <a href="https://wa.me/8319111085?text=Hello%20DRV%20Events!" class="whatsapp-btn" title="Chat with us on WhatsApp">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <script>
+        // Testimonials Data
+        const testimonials = [
+            {
+                text: "We had an amazing experience with DRV Events for our wedding. From planning to execution, everything was handled so smoothly and professionally. A big thanks to Dhruv bhaiya and his hardworking team for making our special day truly memorable. The entire wedding setup was beautiful, and the attention to detail was impressive. Haldi and Musical Phere were the real highlights — full of colors, emotions, and perfect arrangements. Everything felt magical!",
+                author: "Vipin Solanki",
+                event: "Wedding Ceremony",
+                emoji: "👰"
+            },
+            {
+                text: "Thank you so much to the DRV Events team for making birthday celebration truly special and memorable! Everything was beautifully planned and managed, and the team was very supportive and professional throughout. We absolutely loved the decoration and overall experience. Highly recommend DRV Events to anyone looking to create beautiful and stress-free celebrations.",
+                author: "Goutam Pawar",
+                event: "Birthday Celebration",
+                emoji: "🎉"
+            },
+            {
+                text: "We had DRV Events handle my grandmother's 75th birthday, and genuinely, they made it feel special. Everything ran smoothly without us having to worry. The documentary-style video they put together was beautiful. The songs and activities they chose fit her personality perfectly. It felt thoughtful, not generic. We really appreciated the care and effort they put in.",
+                author: "Nainish",
+                event: "75th Birthday Event",
+                emoji: "👵"
+            },
+            {
+                text: "Dhruv bhaiya did an excellent job at our event management for our wedding at a very cost effective price. He also customized E-patrika based on our choice, that shows he is very considerate and welcoming. You can always go ahead with DRV events and enjoy your wedding peacefully.",
+                author: "Vaibhav Joshi",
+                event: "Wedding Management",
+                emoji: "💍"
+            },
+            {
+                text: "DRV Events gave me 'The Dreamy Wedding.' Their suggestions truly shaped the entire wedding. It's not the big things that make your wedding successful but the small details you pay attention to. Pre planning reduces a lot of wedding stress, and I would highly recommend DRV Events for any big/small functions. YOU DREAM, THEY EXECUTE!",
+                author: "Shreya Solanki",
+                event: "Wedding Planning",
+                emoji: "✨"
+            },
+            {
+                text: "The event organized by you dhruv bhaiya was extremely amazing. All the arrangements were comfortable and satisfying. My family enjoyed every moment of the event organized by your team. Thank you for the wonderful experience!",
+                author: "Chirag Gupta",
+                event: "Event Management",
+                emoji: "🎊"
+            },
+            {
+                text: "Thank you very much for making Manya's birthday special and so beautifully organized. It meant a lot to us. The entire team worked tirelessly to ensure everything was perfect and memorable for our family.",
+                author: "Diksha Jadhav",
+                event: "Birthday Party",
+                emoji: "🎈"
+            },
+            {
+                text: "Dhruv bhaiya was amazing, everything he handled perfectly from entry to the last of the function, doesn't let anyone bored till the end of the party. Thanks bhaiya for making our event so lively and entertaining!",
+                author: "Chandni Manwani",
+                event: "Party Organization",
+                emoji: "🎭"
+            },
+            {
+                text: "I am happy that my wife's 75th Birthday Celebration was managed by DRV Events. They made it memorable for our family and friends. The Script of her life story was very nice and narration was impressive. The coordination, decoration, and anchoring were all done beautifully. Mr. Dhruv is a good singer himself.",
+                author: "Dr. Gopal Binnani",
+                event: "75th Birthday Celebration",
+                emoji: "🎂"
+            },
+            {
+                text: "DRV Event is a perfect event company and it's my personal experience that Dhruv bhaiya is the best person to celebrate your happy moments. He has done a great job and provided 100% successful results. I am completely satisfied!",
+                author: "Gourav Chawda",
+                event: "Event Management",
+                emoji: "👍"
+            },
+            {
+                text: "I am completely satisfied with the two events I got planned by DRV Events. Highly recommended to everyone for all their small and big event needs. Customized needs for your customized events is what they give! Cheers to DRV!",
+                author: "Apoorva Bhatnagar",
+                event: "Multiple Events",
+                emoji: "🌟"
+            },
+            {
+                text: "One of the best event management companies in central India which has expertise in managing hundreds of events successfully. You will get great services by TEAM DRV within your specified budget. Highly professional and dedicated!",
+                author: "Sarvesh Parmar",
+                event: "Event Management",
+                emoji: "🏆"
+            },
+            {
+                text: "Thank you for making our family's big day so memorable. You and your team managed everything so beautifully. Haldi event was a big hit. You nailed it dhruv bhaiya! Thank you once again for making our celebration special and stress-free!",
+                author: "Akanksha Bhatt",
+                event: "Haldi Ceremony",
+                emoji: "💛"
+            }
+        ];
+
+        let currentSlide = 0;
+        let currentView = 'grid';
+        let currentSize = 'medium';
+
+        // Initialize carousel
+        function initCarousel() {
+            const container = document.getElementById('carouselContainer');
+            testimonials.forEach((testimonial, index) => {
+                const slide = document.createElement('div');
+                slide.className = 'carousel-slide' + (index === 0 ? ' active' : '');
+                slide.innerHTML = `
+                    <div class="testimonial-card size-${currentSize}">
+                        <div class="testimonial-stars">★★★★★</div>
+                        <p class="testimonial-text">"${testimonial.text}"</p>
+                        <div class="testimonial-author">
+                            <div class="author-avatar">${testimonial.emoji}</div>
+                            <div class="author-info">
+                                <h4>${testimonial.author}</h4>
+                                <p>${testimonial.event}</p>
+                            </div>
+                        </div>
+                    </div>
+                `;
+                container.appendChild(slide);
+            });
+            document.getElementById('totalSlides').textContent = testimonials.length;
+        }
+
+        function switchView(view) {
+            currentView = view;
+            currentSlide = 0;
+            
+            document.querySelectorAll('.toggle-btn').forEach(btn => btn.classList.remove('active'));
+            event.target.closest('.toggle-btn').classList.add('active');
+
+            const gridView = document.getElementById('gridView');
+            const carouselView = document.getElementById('carouselView');
+
+            if (view === 'grid') {
+                gridView.classList.add('active');
+                carouselView.classList.remove('active');
+            } else {
+                gridView.classList.remove('active');
+                carouselView.classList.add('active');
+                if (carouselView.querySelector('.carousel-slide') === null) {
+                    initCarousel();
+                }
+                updateCarousel();
+            }
+        }
+
+        function changeSize(size) {
+            currentSize = size;
+            
+            document.querySelectorAll('.size-btn').forEach(btn => btn.classList.remove('active'));
+            event.target.classList.add('active');
+
+            document.querySelectorAll('.testimonial-card').forEach(card => {
+                card.classList.remove('size-small', 'size-medium', 'size-large');
+                card.classList.add('size-' + size);
+            });
+        }
+
+        function nextSlide() {
+            currentSlide = (currentSlide + 1) % testimonials.length;
+            updateCarousel();
+        }
+
+        function prevSlide() {
+            currentSlide = (currentSlide - 1 + testimonials.length) % testimonials.length;
+            updateCarousel();
+        }
+
+        function updateCarousel() {
+            document.querySelectorAll('.carousel-slide').forEach((slide, index) => {
+                slide.classList.toggle('active', index === currentSlide);
+            });
+            document.getElementById('currentSlide').textContent = currentSlide + 1;
+        }
+
+        // Initialize on load
+        document.addEventListener('DOMContentLoaded', initCarousel);
+    </script>
+
+    <script src="/my-work/js/3d-elements.js"></script>
+    <script src="/my-work/js/main.js"></script>
+</body>
+</html>
